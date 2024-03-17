@@ -43,20 +43,7 @@
         }
         break;
 
-    case 'PUT':
-            if(!empty($_GET["id"])){
-                $id = intval($_GET["id"]);
-                
-                
-                $departureTime= $_GET["departureTime"];
-                $arrivalTime= $_GET["arrivalTime"];
-                
-                
-                $response = rescheduleFlight($id,$departureTime,$arrivalTime);
-                echo json_encode($response);
-
-            }
-            break;
+   
     
     default:
         echo json_encode([
@@ -147,18 +134,4 @@
     return $response;
  }
 
- function rescheduleFlight($id,$departureTime,$arrivalTime){
-    global $mysqli; 
-    $query = $mysqli->prepare("UPDATE flights SET departureTime=?,arrivalTime=? WHERE id=?");
-    $query->bind_param("ssi",$departureTime,$arrivalTime, $id);
-    if($query->execute()){
-        $updateStatus=$mysqli->prepare('UPDATE tickets SET status="scheduled" WHERE flightID=?');
-        $updateStatus->bind_param('i',$id);
-        if($updateStatus->execute()){
-        $response["status"]= "success";
-        }
-    }else{
-        $response["status"]= "failed";
-    }
-    return $response;
- }
+ 
