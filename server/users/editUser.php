@@ -24,8 +24,9 @@
  }
  function edituser($id,$name,$password,$image){
   global $mysqli; 
+  $hashed_password = password_hash($password, PASSWORD_BCRYPT);
   $query = $mysqli->prepare("UPDATE users SET name=?,password=?,image=? WHERE id=?");
-  $query->bind_param("sssi",$name,$password,$image, $id);
+  $query->bind_param("sssi",$name,$hashed_password,$image, $id);
   if($query->execute()){
      $response['status']="success";
   }else{
