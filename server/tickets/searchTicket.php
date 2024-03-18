@@ -2,10 +2,16 @@
 
 include("../db/connection.php");
 
-$id=$_GET["id"];
+$destination=$_GET["destination"];
+$date=$_GET["date"];
 
-$query = $mysqli->prepare('select * from tickets where flightID=?');
-$query->bind_param('i', $id);
+$query = $mysqli->prepare('
+SELECT tickets.id,totalSeats,date,price,status,flightID FROM `tickets` 
+ join flights on flights.id=tickets.flightID
+WHERE flights.destination=? and tickets.date=?
+
+');
+$query->bind_param('ss', $destination, $date);
 $query->execute();
 $query->store_result();
 $num_rows = $query->num_rows();
