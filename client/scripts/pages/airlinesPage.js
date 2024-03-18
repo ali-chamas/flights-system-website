@@ -43,7 +43,8 @@ const filterAirlines = (key) => {
     );
     generateAirlines(newAirlines);
   } else {
-    generateAirlines(airlines);
+    const newAirlines = airlines.sort((a, b) => b.id - a.id);
+    generateFlights(newAirlines);
   }
 };
 

@@ -54,7 +54,12 @@
 
  function getAllFlights(){
     global $mysqli;
-    $query = $mysqli->prepare("select * from flights");
+    $query = $mysqli->prepare("
+    select flights.*,airlines.name
+    from flights 
+    join airlines on airlines.id=flights.airlineID
+    Where flights.airlineID=airlines.id
+    ");
     $query->execute();
     $query->store_result();
     $num_rows = $query->num_rows();
@@ -64,7 +69,7 @@
         $response['message']= 'no flights available';
     }else{
         $flights = [];
-        $query->bind_result($id, $departure, $destination,$departureTime,$arrivalTime,$image,$rating,$airlineID);
+        $query->bind_result($id, $departure, $destination,$departureTime,$arrivalTime,$image,$rating,$airlineID,$airlineName);
         while($query->fetch()){
             $flight = [
                 'id' => $id,
@@ -74,7 +79,8 @@
                 'arrivalTime'=> $arrivalTime,
                 'image'=> $image,
                 'rating'=> $rating,
-                'airlineID'=> $airlineID
+                'airlineID'=> $airlineID,
+                'airlineName'=>$airlineName
                
             ];
 
