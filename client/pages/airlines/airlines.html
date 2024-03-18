@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/client/assets/favicon.ico" />
     <script
       src="https://kit.fontawesome.com/96cf59c222.js"
       crossorigin="anonymous"
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/client/styles/common/index.css" />
     <link rel="stylesheet" href="/client/styles/common/colors.css" />
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
+    <link rel="stylesheet" href="/client/styles//pages/airlines.css" />
     <title>FlyMigo</title>
   </head>
   <body>
@@ -65,7 +66,20 @@
       </div>
     </header>
 
-    <section></section>
+    <section class="flex column gap airlines-section w-full">
+      <div class="w-full flex justify-between">
+        <h2>Airlines</h2>
+        <select id="airlines-filter">
+          <option value="all">all</option>
+          <option value="rating">rating</option>
+          <option value="flights">flights</option>
+        </select>
+      </div>
+      <div
+        class="flex align-center airlines-container"
+        id="airlines-container"
+      ></div>
+    </section>
 
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
@@ -84,5 +98,6 @@
     </footer>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
+    <script src="/client/scripts/pages/airlinesPage.js"></script>
   </body>
 </html>

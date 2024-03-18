@@ -51,7 +51,11 @@
 
  function getAllAirlines(){
     global $mysqli;
-    $query = $mysqli->prepare("select * from airlines");
+    $query = $mysqli->prepare("
+    SELECT airlines.*, COUNT(flights.airlineID) AS num_flights
+    FROM airlines
+    LEFT JOIN flights ON airlines.id = flights.airlineID
+    GROUP BY airlines.id;");
     $query->execute();
     $query->store_result();
     $num_rows = $query->num_rows();
@@ -61,21 +65,24 @@
         $response['message']= 'no airlines available';
     }else{
         $ailines = [];
-        $query->bind_result($id, $name, $logo,$rating);
+        $query->bind_result($id, $name, $rating,$logo,$count);
         while($query->fetch()){
             $airline = [
                 'id' => $id,
                 'name'=> $name,
                 'logo'=> $logo,
                 'rating'=> $rating,
+                'flightsNumber'=>$count
                 
                
             ];
 
             $airlines[] = $airline;
         }
+
         $response['status']='success';
         $response['airlines']= $airlines;
+        
     }
     return $response;
  }
@@ -86,7 +93,7 @@
     $query->bind_param('i', $id);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $name, $logo,$rating);
+    $query->bind_result($id, $name, $rating,$logo);
     $query->fetch();
     $response['status']="success";
     $response["airline"]= [
