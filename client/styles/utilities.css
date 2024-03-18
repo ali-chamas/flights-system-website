@@ -1,0 +1,73 @@
+.btn-style {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-style:hover {
+  opacity: 0.85;
+}
+
+.shadow:hover {
+  box-shadow: 0px 1px 3px 2px gainsboro;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.w-full {
+  width: 100%;
+}
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+
+.gap {
+  gap: 20px;
+}
+
+.h1-size {
+  font-size: 50px;
+}
+
+.h-full {
+  height: 100vh;
+}
+
+.border-radius {
+  border-radius: 20px;
+}
+
+.search-bar {
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .h1-size {
+    font-size: 30px;
+  }
+}

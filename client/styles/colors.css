@@ -1,0 +1,29 @@
+.bg-primary {
+  background-color: #007dd60c;
+}
+
+.text-primary {
+  color: #007cd6;
+}
+
+.bg-secondary {
+  background-color: #007dd6;
+}
+
+.header-bg {
+  background-color: rgba(0, 0, 0, 0.219);
+}
+
+.text-white {
+  color: white;
+}
+
+.text-danger {
+  color: rgb(171, 0, 0);
+}
+.bg-danger {
+  background-color: rgb(171, 0, 0);
+}
+.border-color {
+  border-color: rgb(98, 98, 98);
+}
