@@ -22,6 +22,9 @@ header {
   height: 10vh;
   backdrop-filter: blur(5px);
 }
+header img {
+  width: 40px;
+}
 
 .profile-icon {
   display: none;
@@ -73,14 +76,17 @@ footer > div a {
 
 @media (max-width: 768px) {
   header h1 {
-    font-size: 26px;
+    font-size: 22px;
+  }
+  header img {
+    width: 30px;
   }
   nav a {
     font-size: 13px;
   }
 
   footer h1 {
-    font-size: 26px;
+    font-size: 22px;
   }
   footer > div a {
     font-size: 13px;
