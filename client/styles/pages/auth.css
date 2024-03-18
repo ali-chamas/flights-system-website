@@ -1,0 +1,21 @@
+form {
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+
+.login-error {
+  display: none;
+}
+
+.switch {
+  cursor: pointer;
+}
+button {
+  border: none;
+}
+form input {
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid gainsboro;
+}

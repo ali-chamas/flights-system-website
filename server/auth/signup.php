@@ -19,8 +19,8 @@ $email_exists = $check_email->num_rows();
 
 if ($email_exists == 0) {
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-    $query = $mysqli->prepare('insert into users(name,password,email,image) values(?,?,?,?);');
-    $query->bind_param('ssss', $name, $hashed_password, $email,$image);
+    $query = $mysqli->prepare('insert into users(name,email,password,image) values(?,?,?,?);');
+    $query->bind_param('ssss', $name, $email, $hashed_password,$image);
     $query->execute();
     $query->store_result();
    
