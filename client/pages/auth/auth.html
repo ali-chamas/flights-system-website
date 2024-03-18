@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/client/styles/common/index.css" />
     <link rel="stylesheet" href="/client/styles/common/colors.css" />
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
+    <link rel="stylesheet" href="/client/styles/pages/auth.css" />
     <title>FlyMigo</title>
   </head>
   <body>
@@ -65,7 +66,48 @@
       </div>
     </header>
 
-    <section></section>
+    <section class="w-full h-full flex center">
+      <form class="bg-primary flex column align-center gap" id="login-form">
+        <h2 class="text-primary">Login</h2>
+        <input type="text" placeholder="username" id="username-login" />
+        <input type="password" placeholder="password" id="pass-login" />
+        <button
+          type="button"
+          class="btn-style bg-secondary text-white"
+          id="login-btn"
+        >
+          Login
+        </button>
+        <small class="text-danger" id="login-error"></small>
+        <small class="text-gray"
+          >new here?
+          <span class="switch text-primary" id="signup-switch"
+            >Sign up</span
+          ></small
+        >
+      </form>
+      <form class="bg-primary flex column align-center gap" id="signup-form">
+        <h2 class="text-primary">Sign Up</h2>
+        <input type="text" placeholder="full name" id="name-signup" />
+        <input type="text" placeholder="username" id="username-signup" />
+        <input type="password" placeholder="password" id="pass-signup" />
+        <input type="text" placeholder="image" id="image-signup" />
+        <button
+          type="button"
+          class="btn-style bg-secondary text-white"
+          id="signup-btn"
+        >
+          Sign Up
+        </button>
+        <small class="text-danger" id="signup-error"></small>
+        <small class="text-gray"
+          >Already have an account?
+          <span class="switch text-primary" id="login-switch"
+            >login</span
+          ></small
+        >
+      </form>
+    </section>
 
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
@@ -84,5 +126,7 @@
     </footer>
 
     <script src="/client/scripts/common/header.js"></script>
+    <script src="/client/scripts/common/apiUrl.js"></script>
+    <script src="/client/scripts/pages/auth.js"></script>
   </body>
 </html>

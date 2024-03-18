@@ -23,7 +23,7 @@
   cursor: pointer;
   opacity: 0.9;
 }
-.ai select {
+select {
   border-radius: 30px;
   color: gray;
   outline: none;
