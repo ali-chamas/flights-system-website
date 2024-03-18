@@ -97,7 +97,11 @@ const login = async () => {
       const data = await res.json();
       if (data.status == "logged in") {
         // window.localStorage.setItem("session", JSON.stringify(data.user));
-        window.location.assign("/client");
+        if (data.user.isAdmin) {
+          window.location.assign("/client/pages/admin/adminPanel");
+        } else {
+          window.location.assign("/client");
+        }
       } else {
         displayLoginError(data.status);
       }
@@ -124,7 +128,11 @@ const signup = async () => {
       const data = await res.json();
       if (data.status == "success") {
         // window.localStorage.setItem("session", JSON.stringify(data.user));
-        window.location.assign("/client");
+        if (data.user.isAdmin) {
+          window.location.assign("/client/pages/admin/adminPanel");
+        } else {
+          window.location.assign("/client");
+        }
       } else {
         displaySignupError(data.status);
       }
