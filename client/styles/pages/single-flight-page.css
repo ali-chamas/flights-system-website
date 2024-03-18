@@ -1,0 +1,29 @@
+.flights {
+    min-height: fit-content;
+    height: 200px;
+}
+
+.flights-details {
+    display: flex;
+}
+
+.split {
+    width: 50%;
+    z-index: 1;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.left {
+    left: 0;
+    border-right: 2px solid #d1d1d1;
+}
+
+.right {
+    right: 0;
+}
+
+.centered {  
+    
+}
