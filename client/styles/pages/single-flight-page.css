@@ -1,6 +1,10 @@
 .flights {
     min-height: fit-content;
     height: 200px;
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .flights-details {

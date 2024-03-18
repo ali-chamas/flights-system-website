@@ -23,8 +23,10 @@ const app = async () =>{
     const flight = JSON.parse(data);
     const destination = flight.flight.destination;
     const departure = flight.flight.departure;
+    const depatureTime = flight.flight.departureTime;
+    const arrivalTime = flight.flight.arrivalTime;
     const rating = flight.flight.rating;
-    departureToDestination.innerHTML= `${departure} to ${destination}`;
+    departureToDestination.innerHTML= `<h2>${departure} to ${destination}</h2> </br> Departure time ${depatureTime} </br> Arrival time ${arrivalTime}`;
     totalRating.innerHTML= rating;
 }
 
