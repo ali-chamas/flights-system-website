@@ -2,6 +2,7 @@ const airlinesContainer = document.getElementById("airlines-container");
 const filterBtn = document.getElementById("airlines-filter");
 
 let airlines = [];
+let filterValue = "any";
 
 const getAirlines = async () => {
   try {
@@ -14,6 +15,7 @@ const getAirlines = async () => {
 };
 
 const generateAirlines = (array) => {
+  airlinesContainer.innerHTML = "";
   array.forEach((a) => {
     airlinesContainer.innerHTML += `<a
                                         href="/client/pages/airlines/singleAirlinePage.html?id=${a.id}"
@@ -23,7 +25,7 @@ const generateAirlines = (array) => {
                                         <div class="flex column gap p">
                                         <h2>${a.name}</h2>
                                         <div class="w-full flex justify-between">
-                                            <small>10flights</small>
+                                            <small>${a.flightsNumber} flights</small>
                                             <small><i class="fa-solid fa-star rate-color"></i> ${a.rating}</small>
                                         </div>
                                         </div>
@@ -31,9 +33,25 @@ const generateAirlines = (array) => {
   });
 };
 
+const filterAirlines = (key) => {
+  if (key == "rating") {
+    const newAirlines = airlines.sort((a, b) => b.rating - a.rating);
+    generateAirlines(newAirlines);
+  } else if (key == "flights") {
+    const newAirlines = airlines.sort(
+      (a, b) => b.flightsNumber - a.flightsNumber
+    );
+    generateAirlines(newAirlines);
+  } else {
+    generateAirlines(airlines);
+  }
+};
+
 const app = async () => {
   await getAirlines();
   generateAirlines(airlines);
-  console.log(airlines);
+  filterBtn.addEventListener("change", (e) => {
+    filterAirlines(e.target.value);
+  });
 };
 app();

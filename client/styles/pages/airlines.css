@@ -6,6 +6,7 @@
   padding: 30px 50px;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  gap: 30px;
 }
 
 .airline-card {
@@ -28,4 +29,10 @@ select {
   color: gray;
   outline: none;
   padding: 5px;
+}
+
+@media (max-width: 500px) {
+  h2 {
+    font-size: 20px;
+  }
 }
