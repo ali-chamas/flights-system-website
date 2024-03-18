@@ -1,0 +1,94 @@
+.landing-section {
+  background-image: url("/client/assets/landing-page/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+header {
+  position: fixed;
+}
+
+.landing-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.468);
+  position: fixed;
+}
+
+.landing-container > div {
+  gap: 40px;
+}
+.landing-container h1 {
+  font-size: 50px;
+}
+
+.search-container {
+  gap: 5px;
+}
+.search-input {
+  background-color: white;
+  padding: 12px;
+  gap: 5px;
+  border-radius: 9px;
+  width: 250px;
+}
+.search-input > i {
+  color: grey;
+  font-size: 18px;
+}
+.date-input {
+  border-radius: 9px;
+  padding: 11px;
+}
+input {
+  border: none;
+  outline: none;
+}
+button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+button:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+@media (max-width: 840px) {
+  .landing-container h1 {
+    font-size: 38px;
+  }
+  .search-input {
+    padding: 10px;
+    gap: 3px;
+
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .landing-container h1 {
+    font-size: 30px;
+  }
+  .date-input {
+    padding: 6px;
+  }
+  button {
+    padding: 7px;
+    font-size: 14px;
+  }
+  input {
+    max-width: 100px;
+  }
+  .search-input {
+    padding: 7px;
+    gap: 2px;
+    width: 150px;
+  }
+  .search-input > i {
+    font-size: 14px;
+  }
+}

@@ -11,7 +11,7 @@
 }
 
 .header-bg {
-  background-color: rgba(0, 0, 0, 0.219);
+  background-color: #00000038;
 }
 
 .text-white {
@@ -19,11 +19,11 @@
 }
 
 .text-danger {
-  color: rgb(171, 0, 0);
+  color: #ab0000;
 }
 .bg-danger {
-  background-color: rgb(171, 0, 0);
+  background-color: #ab0000;
 }
 .border-color {
-  border-color: rgb(98, 98, 98);
+  border-color: #626262;
 }

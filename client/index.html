@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/client/assets/favicon.ico" />
     <script
       src="https://kit.fontawesome.com/96cf59c222.js"
       crossorigin="anonymous"
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/client/styles/common/index.css" />
     <link rel="stylesheet" href="/client/styles/common/colors.css" />
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
+    <link rel="stylesheet" href="/client/styles/pages/landing-page.css" />
     <title>FlyMigo</title>
   </head>
   <body>
@@ -65,7 +66,27 @@
       </div>
     </header>
 
-    <section></section>
+    <section class="landing-section flex center">
+      <div class="flex landing-container">
+        <div class="flex column center w-full text-white">
+          <div class="flex column gap align-center">
+            <h1>Welcome to FlyMingo!</h1>
+            <p>The best travel partner</p>
+          </div>
+          <div class="search-container flex align-center">
+            <div class="search-input flex align-center">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Istanbul..." />
+            </div>
+
+            <input type="date" class="date-input" />
+            <button type="button" class="bg-secondary text-white">
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
