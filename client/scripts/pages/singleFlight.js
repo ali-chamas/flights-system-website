@@ -17,6 +17,20 @@ const getFlight = async () => {
     }
 }
 
+const getTicket = async () => {
+    try {
+        const response = await fetch("http://localhost/flights-system-website/server/tickets/view.php?id=2", {
+            method: "GET"
+        });
+        const responseData = await response.text();
+        return responseData;
+
+    } catch (error) {
+        console.error(error);
+        alert("Error occured while sending request");
+    }
+}
+
 
 const app = async () =>{
     const data = await getFlight();
