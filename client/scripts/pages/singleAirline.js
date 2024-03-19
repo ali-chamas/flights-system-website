@@ -45,7 +45,10 @@ const getFlights = async () => {
       }
     );
     const data = await response.json();
-    flights = data.flights;
+    if (data.status == "Failed") {
+    } else {
+      flights = data.flights;
+    }
   } catch (error) {
     console.error(error);
   }
@@ -60,7 +63,10 @@ const getReviews = async () => {
       }
     );
     const data = await response.json();
-    reviews = data.reviews;
+    if (data.status == "Failed") {
+    } else {
+      reviews = data.reviews;
+    }
   } catch (error) {
     console.error(error);
   }

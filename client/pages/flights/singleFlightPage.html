@@ -69,7 +69,94 @@
         ></a>
       </div>
     </header>
-    <section></section>
+
+    <section class="flex column gap p">
+      <div class="flex justify-between w-full flight">
+        <h2 id="flight-name"></h2>
+        <div class="flex gap">
+          <i class="fa-solid fa-star rate-color rating-btn" id="rating-btn"></i>
+          <p id="rating"></p>
+        </div>
+      </div>
+      <div class="flex justify-between w-full p flight-info">
+        <div class="flex column gap w-full align-center tickets">
+          <b>Tickets</b>
+          <div class="flex gap tickets-container" id="tickets-container"></div>
+        </div>
+        <div class="flex column w-full gap align-center p reviews">
+          <b>Reviews</b>
+          <div
+            class="flex column gap reviews-container"
+            id="reviews-container"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="rating-popup" class="h-full w-full rating-popup center hidden">
+      <form class="bg-primary flex column gap">
+        <h3>Rate Flight</h3>
+        <input
+          type="number"
+          placeholder="rating"
+          id="rating-input"
+          max="5"
+          min="0"
+        />
+        <textarea
+          id="review-input"
+          placeholder="review"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <div class="flex gap">
+          <button
+            type="button"
+            class="btn-style bg-secondary text-white"
+            id="submit-btn"
+          >
+            submit
+          </button>
+          <button type="button" class="btn-style bg-primary" id="close-btn">
+            close
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="booking-popup" class="h-full w-full booking-popup center flex">
+      <form class="bg-primary flex column gap">
+        <div class="balance flex gap align-center">
+          <i class="fa-solid fa-coins rate-color"></i>
+          <small>3320</small>
+        </div>
+        <h3>Lebanon - France</h3>
+        <small class="text-gray">2023-03-20</small>
+        <select id="seat-select">
+          <option value="seat 1">seat 1</option>
+          <option value="seat 1">seat 1</option>
+          <option value="seat 1">seat 1</option>
+        </select>
+        <div class="flex gap align-center">
+          <label for="">vip?</label>
+          <input type="checkbox" id="vip-checkbox" />
+        </div>
+        <small class="text-gray">total: 260</small>
+        <div class="flex gap">
+          <button
+            type="button"
+            class="btn-style bg-secondary text-white"
+            id="confirm-booking"
+          >
+            confirm
+          </button>
+          <button type="button" class="btn-style bg-primary" id="close-booking">
+            close
+          </button>
+        </div>
+      </form>
+    </div>
+
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
         <a href="/client/pages/airlines/airlines.html">airlines</a>
