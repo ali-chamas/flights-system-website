@@ -21,6 +21,7 @@
     background-color: #F0F7FD;
     padding: 30px;
     border-radius: 20px;
+    margin: 30px;
 
 }
 
@@ -29,9 +30,49 @@
     flex-direction: column;
     background-color: #F0F7FD;
     padding: 30px;
+    border-radius: 20px;
 }
 
 .username {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px #d1d1d1 solid ;
+    padding: 10px;
 }
+
+.email {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px #d1d1d1 solid ;
+    padding: 10px;
+}
+
+.left-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coins {
+    display: flex;
+    background-color: #F0F7FD;
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F7FD;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.child {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px #d1d1d1 solid ;
+    padding: 10px;
+}
+
