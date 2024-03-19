@@ -19,6 +19,7 @@ const getAirline = async () => {
     }
 }
 
+//this will get all the flights but i want all the flights with a specific airlineID
 const getFlights = async () => {
     try {
         const response = await fetch("http://localhost/flights-system-website/server/flights/flightsApi.php", {
@@ -34,6 +35,19 @@ const getFlights = async () => {
 }
 
 
+const getReviews = async () => {
+    try {
+        const response = await fetch("http://localhost/flights-system-website/server/reviews/view-airlines-reviews.php", {
+            method: "GET"
+        });
+        const responseData = await response.text();
+        return responseData;
+
+    } catch (error) {
+        console.error(error);
+        alert("Error occured while sending request");
+    }
+}
 
 
 
@@ -46,7 +60,21 @@ const app = async () => {
     airline.innerHTML = airlineName;
     totalRating.innerHTML = rating;
 
+    const flightsData = await getFlights();
+    const flights = JSON.parse(flightsData);
 
+    const reviewsData = await getReviews();
+    const reviews = JSON.parse(reviewsData);
+
+    totalReviews.innerHTML="";
+    for (let i=0; i<reviews.reviews.length; i++) {
+        const rating = reviews.reviews[i].rating;
+        const review = reviews.reviews[i].review;
+        const createdAT = reviews.reviews[i].createdAT;
+        const username = reviews.reviews[i].userName;
+
+        totalReviews.innerHTML += `${username} ${review} ${rating} created at ${createdAT} </br>`;
+    }
 }
 
 app();
