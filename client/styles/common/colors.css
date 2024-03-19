@@ -34,3 +34,7 @@
 .rate-color {
   color: rgb(215, 190, 0);
 }
+
+.text-gray {
+  color: gray;
+}

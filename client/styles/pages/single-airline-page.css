@@ -1,28 +1,42 @@
-.flight {
+.airline {
   padding: 10px 45px;
 }
 
-.ticket-card img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.flight-card {
+  max-width: 250px;
+  box-shadow: 0 0 10px 0 gray;
+  border-radius: 20px;
 }
-.ticket-card small {
+.flight-card img {
+  border-radius: 20px 20px 0 0;
+  width: 250px;
+  height: 150px;
+}
+.flight-card:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+.flight-card b {
+  font-size: 16px;
+}
+.flight-card p {
+  font-size: 12px;
   color: gray;
 }
-.ticket-card {
-  border-radius: 20px;
-  gap: 20px;
+.flight-card small {
+  font-size: 12px;
+}
+.flights-container {
+  flex-wrap: wrap;
+  overflow-y: auto;
+  max-height: 600px;
+  padding: 20px;
 }
 
-.ticket-card button {
-  height: 30px;
-  border: none;
-}
 .reviews {
   width: 50%;
 }
-.tickets {
+.airlines {
   width: 50%;
 }
 .review-container {
@@ -69,32 +83,12 @@
   max-width: 250px;
   max-height: 200px;
 }
-
-button {
+.rating-popup button {
   border: none;
 }
 
-.booking-popup {
-  position: fixed;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.358);
-}
-
-.booking-popup form {
-  padding: 20px;
-  align-items: center;
-  background-color: white;
-  border-radius: 30px;
-  position: relative;
-}
-
-.balance {
-  align-self: flex-end;
-  margin: 10px;
-}
-
 @media (max-width: 650px) {
-  .flight-info {
+  .airline-info {
     flex-direction: column;
     align-items: center;
   }

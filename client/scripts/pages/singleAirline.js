@@ -1,13 +1,10 @@
 const urlParams = new URLSearchParams(window.location.search);
-const flightID = urlParams.get("id");
+const airlineID = urlParams.get("id");
 
-const departureToDestination = document.getElementById(
-  "departure-to-destination"
-);
-const ticketsContainer = document.getElementById("tickets-container");
+const flightsCntainer = document.getElementById("flights-container");
 const reviewsContainer = document.getElementById("reviews-container");
-const flightName = document.getElementById("flight-name");
-const flightRating = document.getElementById("rating");
+const airlineName = document.getElementById("airline-name");
+const airlineRating = document.getElementById("rating");
 const ratingBtn = document.getElementById("rating-btn");
 const popup = document.getElementById("rating-popup");
 const ratingInput = document.getElementById("rating-input");
@@ -15,8 +12,8 @@ const reviewInput = document.getElementById("review-input");
 const submitBtn = document.getElementById("submit-btn");
 const closeBtn = document.getElementById("close-btn");
 
-let flight = {};
-let tickets = [];
+let airline = {};
+let flights = [];
 let reviews = [];
 
 const userReview = {
@@ -24,40 +21,46 @@ const userReview = {
   review: "",
 };
 
-const getFlight = async () => {
+const getAirline = async () => {
   try {
     const response = await fetch(
-      `http://localhost/flights-system-website/server/flights/flightsApi.php?id=${flightID}`
+      `http://localhost/flights-system-website/server/airlines/airlinesApi.php?id=${airlineID}`,
+      {
+        method: "GET",
+      }
     );
     const data = await response.json();
-    flight = data.flight;
+    airline = data.airline;
   } catch (error) {
     console.error(error);
-    alert("Error occured while sending request");
   }
 };
 
-const getTickets = async () => {
+const getFlights = async () => {
   try {
     const response = await fetch(
-      `http://localhost/flights-system-website/server/tickets/view.php?id=${flightID}`
+      `http://localhost/flights-system-website/server/airlines/airlineFlights.php?id=${airlineID}`,
+      {
+        method: "GET",
+      }
     );
     const data = await response.json();
-
     if (data.status == "Failed") {
     } else {
-      tickets = data.allTickets;
+      flights = data.flights;
     }
   } catch (error) {
     console.error(error);
-    alert("Error occured while sending request");
   }
 };
 
 const getReviews = async () => {
   try {
     const response = await fetch(
-      `http://localhost/flights-system-website/server/reviews/view-flights-reviews.php?id=${flightID}`
+      `http://localhost/flights-system-website/server/reviews/view-airlines-reviews.php?id=${airlineID}`,
+      {
+        method: "GET",
+      }
     );
     const data = await response.json();
     if (data.status == "Failed") {
@@ -66,39 +69,40 @@ const getReviews = async () => {
     }
   } catch (error) {
     console.error(error);
-    alert("Error occured while sending request");
   }
 };
 
-const generateTickets = () => {
-  ticketsContainer.innerHTML = "";
+const generateFlights = () => {
+  flightsCntainer.innerHTML = "";
 
-  tickets.forEach((ticket) => {
-    ticketsContainer.innerHTML += `
-    <div class="flex  p ticket-card bg-primary align-center">
-      <img src=${flight.airlineImage} alt=""/>
-       <div class="flex column gap">
-        <b>date:</b>
-        <small>${ticket.date}</small>
-       </div>
-       <div class="flex column gap">
-        <b>seats:</b>
-        <small>${ticket.totalSeats}</small>
-       </div>
-       <div class="flex column gap">
-        <b>price:</b>
-        <small>${ticket.price}</small>
-       </div>
-       <button class="btn-style bg-secondary text-white">Book</button>
+  flights.forEach((a) => {
+    flightsCntainer.innerHTML += `<a
+    href="/client/pages/flights/singleFlightPage.html?id=${a.id}"
+    class="flex column gap flight-card"
+    >
+    <img src="${a.image}" alt="" />
+    <div class="flex column gap p">
+    <div class="w-full flex justify-between">
+    <div class="flex column gap">
+    <b>From</b>
+    <p>${a.departure}</p>
     </div>
-
-    `;
+    <div class="flex column gap">
+    <b>To</b>
+    <p>${a.destination}</p></div>
+    </div>
+    
+    <div class="w-full flex justify-between">
+        <small>${a.airlineName} flights</small>
+        <small><i class="fa-solid fa-star rate-color"></i> ${a.rating}</small>
+    </div>
+    </div>
+    </a>`;
   });
 };
 
 const generateReviews = () => {
   reviewsContainer.innerHTML = "";
-
   reviews.forEach((review) => {
     reviewsContainer.innerHTML += `<div class="flex column review-card w-full gap p bg-primary">
     <div class="w-full flex justify-between">
@@ -112,9 +116,9 @@ const generateReviews = () => {
   });
 };
 
-const generateFlight = () => {
-  flightName.innerText = `${flight.departure} - ${flight.destination} `;
-  flightRating.innerText = flight.rating;
+const generateAirline = () => {
+  airlineName.innerText = airline.name;
+  airlineRating.innerText = airline.rating;
 };
 
 const checkSession = () => {
@@ -130,21 +134,21 @@ const addReview = async () => {
   } else {
     const currentUser = JSON.parse(window.localStorage.getItem("session"));
     const reviewBody = new FormData();
-    reviewBody.append("flightID", flightID);
+    reviewBody.append("airlineID", airlineID);
     reviewBody.append("userID", currentUser.id);
     reviewBody.append("review", userReview.review);
     reviewBody.append("rating", userReview.rating);
 
     try {
-      const res = await fetch(`${apiURL}/flights/rateFlights.php`, {
+      const res = await fetch(`${apiURL}/airlines/rateAirlines.php`, {
         method: "POST",
         body: reviewBody,
       });
       const data = await res.json();
       console.log(data);
       resetReview();
-      await getFlight();
-      generateFlight();
+      await getAirline();
+      generateAirline();
       await getReviews();
       generateReviews();
       closePopup();
@@ -171,12 +175,18 @@ const closePopup = () => {
 };
 
 const app = async () => {
-  await getFlight();
+  await getAirline();
+  await getFlights();
   await getReviews();
-  await getTickets();
-  generateReviews();
-  generateFlight();
-  generateTickets();
+
+  if (flights) {
+    generateFlights();
+  }
+  if (reviews) {
+    generateReviews();
+  }
+
+  generateAirline();
 
   ratingBtn.addEventListener("click", openPopup);
   closeBtn.addEventListener("click", closePopup);

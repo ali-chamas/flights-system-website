@@ -1,5 +1,5 @@
 .btn-style {
-  padding: 10px 20px;
+  padding: 8px 15px;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
@@ -67,6 +67,10 @@
 
 .search-bar {
   max-width: 300px;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (max-width: 768px) {
