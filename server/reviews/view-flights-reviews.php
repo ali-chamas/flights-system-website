@@ -2,12 +2,14 @@
 include("../db/connection.php");
 
 $request_method = $_SERVER["REQUEST_METHOD"];
+$flightID=$_GET['id'];
 
 $query = $mysqli->prepare("
 select flightsreviews.*, users.name
 from flightsreviews
 join users on users.id=flightsreviews.userID
-where flightsreviews.userID=users.id");
+where flightsreviews.flightID=?");
+$query->bind_param("i", $flightID);
 $query->execute();
 $query->store_result();
 $num_rows = $query->num_rows();

@@ -94,11 +94,14 @@
 
  function getFlight($id){
     global $mysqli;
-    $query = $mysqli->prepare('select * from flights where id=?');
+    $query = $mysqli->prepare('select flights.*,airlines.name,airlines.logo
+     from flights
+     join airlines on airlines.id=flights.airlineID
+     where flights.id=?');
     $query->bind_param('i', $id);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $departure, $destination,$departureTime,$arrivalTime,$image,$rating,$airlineID);
+    $query->bind_result($id, $departure, $destination,$departureTime,$arrivalTime,$image,$rating,$airlineID,$airlineName,$airlineImage);
     $query->fetch();
     $response['status']="success";
     $response["flight"]= [
@@ -109,7 +112,9 @@
         'arrivalTime'=> $arrivalTime,
         'image'=> $image,
         'rating'=> $rating,
-        'airlineID'=> $airlineID
+        'airlineID'=> $airlineID,
+        'airlineName'=>$airlineName,
+        'airlineImage'=>$airlineImage
     ];
     return $response;
  }

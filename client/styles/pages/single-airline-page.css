@@ -1,29 +1,98 @@
 .airline {
-    min-height: fit-content;
-    height: 200px;
-    margin: 50px;
-    display: flex;
-    justify-content: space-between;
-
+  padding: 10px 45px;
 }
 
-.flights-details {
-    display: flex;
+.flight-card {
+  max-width: 250px;
+  box-shadow: 0 0 10px 0 gray;
+  border-radius: 20px;
+}
+.flight-card img {
+  border-radius: 20px 20px 0 0;
+  width: 250px;
+  height: 150px;
+}
+.flight-card:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+.flight-card b {
+  font-size: 16px;
+}
+.flight-card p {
+  font-size: 12px;
+  color: gray;
+}
+.flight-card small {
+  font-size: 12px;
+}
+.flights-container {
+  flex-wrap: wrap;
+  overflow-y: auto;
+  max-height: 600px;
+  padding: 20px;
 }
 
-.split {
-    width: 50%;
-    z-index: 1;
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
+.reviews {
+  width: 50%;
+}
+.airlines {
+  width: 50%;
+}
+.review-container {
+  overflow-y: auto;
+  max-height: 600px;
 }
 
-.left {
-    left: 0;
-    border-right: 2px solid #d1d1d1;
+.review-card {
+  border-radius: 20px;
+  width: 400px;
 }
 
-.right {
-    right: 0;
+.rating-btn {
+  cursor: pointer;
+}
+.rating-btn:hover {
+  opacity: 0.85;
+}
+
+.rating-popup {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.358);
+}
+.rating-popup form {
+  padding: 20px;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+}
+.rating-popup input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid gray;
+}
+.rating-popup textarea {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid gray;
+  max-width: 250px;
+  max-height: 200px;
+}
+.rating-popup button {
+  border: none;
+}
+
+@media (max-width: 650px) {
+  .airline-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .review-card {
+    width: 300px;
+  }
 }

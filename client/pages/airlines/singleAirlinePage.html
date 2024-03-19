@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
     <link
       rel="stylesheet"
+      href="/client/styles//pages/single-airline-page.css"
+    />
+    <link
+      rel="stylesheet"
       href="/client/styles/pages/single-airline-page.css"
     />
     <title>FlyMigo</title>
@@ -52,10 +56,14 @@
         class="header-bg mobile-nav column gap align-center w-full mobile-display"
         id="mobile-nav"
       >
-        <a href="/pages/restaurants.html" class="text-white">Airlines</a>
-        <a href="#about" class="text-white">Flights</a>
+        <a href="/client/pages/airlines/airlines.html" class="text-white"
+          >Airlines</a
+        >
+        <a href="/client/pages/flights/flights.html" class="text-white"
+          >Flgihts</a
+        >
         <a
-          href="/pages/login.html"
+          href="/client/pages/auth/auth.html"
           class="btn-style text-white special-font shadow bg-primary"
           id="mobile-login-btn"
           >Login</a
@@ -69,25 +77,59 @@
       </div>
     </header>
 
-    <section class="airline">
-      <div id="airline-name"></div>
-      <div id="total-rating"></div>
+    <section class="flex column gap p">
+      <div class="flex justify-between w-full airline">
+        <h2 id="airline-name"></h2>
+        <div class="flex gap">
+          <i class="fa-solid fa-star rate-color rating-btn" id="rating-btn"></i>
+          <p id="rating"></p>
+        </div>
+      </div>
+      <div class="flex justify-between w-full p airline-info">
+        <div class="flex column gap w-full align-center airlines">
+          <b>Flights</b>
+          <div class="flex gap flights-container" id="flights-container"></div>
+        </div>
+        <div class="flex column w-full gap align-center p reviews">
+          <b>Reviews</b>
+          <div
+            class="flex column gap reviews-container"
+            id="reviews-container"
+          ></div>
+        </div>
+      </div>
     </section>
 
-    <section class="flights-details">
-      <div class="split left">
-        <div class="centered">
-          <h2>List of flights</h2>
-          <div id="available-flights"></div>
+    <div id="rating-popup" class="h-full w-full rating-popup center hidden">
+      <form class="bg-primary flex column gap">
+        <h3>Rate Flight</h3>
+        <input
+          type="number"
+          placeholder="rating"
+          id="rating-input"
+          max="5"
+          min="0"
+        />
+        <textarea
+          id="review-input"
+          placeholder="review"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <div class="flex gap">
+          <button
+            type="button"
+            class="btn-style bg-secondary text-white"
+            id="submit-btn"
+          >
+            submit
+          </button>
+          <button type="button" class="btn-style bg-primary" id="close-btn">
+            close
+          </button>
         </div>
-      </div>
-      <div class="split right">
-        <div class="centered">
-          <h2>Reviews</h2>
-          <div id="reviews"></div>
-        </div>
-      </div>
-    </section>
+      </form>
+    </div>
 
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
