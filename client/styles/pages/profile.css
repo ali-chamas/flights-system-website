@@ -1,79 +1,82 @@
 .section {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 20px 45px;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 45px;
 }
 
 .image-container {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .image-container img {
-    border-radius: 50%;
-    width: 30%;
-    margin: 20px 20px;
+  border-radius: 50%;
+  width: 150px;
 }
 
 .account-details-container {
-    display: flex;
-    justify-content: space-between;
-    background-color: #F0F7FD;
-    border-radius: 20px;
-
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f7fd;
+  border-radius: 20px;
 }
 
 .details-container {
-    display: flex;
-    flex-direction: column;
-    background-color: #F0F7FD;
-    border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f7fd;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .username {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px #d1d1d1 solid ;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #d1d1d1 solid;
+  padding: 10px;
 }
 
 .email {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px #d1d1d1 solid ;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #d1d1d1 solid;
+  padding: 10px;
 }
 
 .left-div {
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .right-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .coins {
-    display: flex;
-    background-color: #F0F7FD;
-    padding: 15px 30px;
-    border-radius: 10px;
+  display: flex;
+  background-color: #f0f7fd;
+  padding: 15px 30px;
+  border-radius: 10px;
+  gap: 10px;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    background-color: #F0F7FD;
-    border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f7fd;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .child {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px #d1d1d1 solid ;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #d1d1d1 solid;
+  padding: 10px;
 }
-

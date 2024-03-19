@@ -16,7 +16,7 @@ switch ($request_method) {
             $check_admin_query->bind_result($is_admin);
             $check_admin_query->fetch();
             if ($is_admin == 1) {
-                $get_requests_query = "SELECT * FROM requests";
+                $get_requests_query = "SELECT requests.*,users.email FROM requests join users on users.id=requests.userID";
                 $result = $mysqli->query($get_requests_query);
 
                 if ($result) {
