@@ -1,6 +1,7 @@
 .section {
     display: flex;
     justify-content: space-evenly;
+    padding: 20px 45px;
 }
 
 .image-container {
@@ -19,9 +20,8 @@
     display: flex;
     justify-content: space-between;
     background-color: #F0F7FD;
-    padding: 30px;
     border-radius: 20px;
-    margin: 30px;
+
 
 }
 
@@ -29,7 +29,6 @@
     display: flex;
     flex-direction: column;
     background-color: #F0F7FD;
-    padding: 30px;
     border-radius: 20px;
 }
 
@@ -48,6 +47,10 @@
 }
 
 .left-div {
+    gap: 20px;
+}
+
+.right-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,8 +67,6 @@
     display: flex;
     flex-direction: column;
     background-color: #F0F7FD;
-    padding: 30px;
-    margin: 30px;
     border-radius: 20px;
 }
 
