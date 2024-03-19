@@ -3,6 +3,7 @@ const flightID = urlParams.get("id");
 const departureToDestination = document.getElementById("departure-to-destination");
 const totalRating = document.getElementById("total-rating");
 const availableTickets = document.getElementById("available-tickets");
+const totalReviews = document.getElementById("reviews");
 
 const getFlight = async () => {
     try {
@@ -54,14 +55,32 @@ const app = async () =>{
     const depatureTime = flight.flight.departureTime;
     const arrivalTime = flight.flight.arrivalTime;
     const rating = flight.flight.rating;
-    const ticketData = await getTickets();
-    const ticket = JSON.parse(ticketData);
-    const date = ticket.allTickets[0].date;
-    const price = ticket.allTickets[0].price;
-    const totalSeats = ticket.allTickets[0].totalSeats;
-    availableTickets.innerHTML= `Date ${date} Price ${price} Total seats ${totalSeats}`;
-
     
+    const ticketData = await getTickets();
+    const tickets = JSON.parse(ticketData);
+
+    availableTickets.innerHTML="";
+    for (let i=0; i<tickets.allTickets.length; i++) {
+        const date = tickets.allTickets[i].date;
+        const price = tickets.allTickets[i].price;
+        const totalSeats = tickets.allTickets[i].totalSeats;
+
+        availableTickets.innerHTML= `Date ${date} Price ${price} Total seats ${totalSeats}`;
+    }
+
+    const reviewsData = await getReviews();
+    const reviews = JSON.parse(reviewsData);
+
+    totalReviews.innerHTML="";
+    for (let i=0; i<reviews.reviews.length; i++) {
+        const rating = reviews.reviews[i].rating;
+        const review = reviews.reviews[i].review;
+        const createdAT = reviews.reviews[i].createdAT;
+        const username = reviews.reviews[i].userName;
+
+        totalReviews.innerHTML += `${username} ${review} ${rating} created at ${createdAT} </br>`;
+    }
+
     departureToDestination.innerHTML= `<h2>${departure} to ${destination}</h2> </br> Departure time ${depatureTime} </br> Arrival time ${arrivalTime}`;
     totalRating.innerHTML= rating;
 }
