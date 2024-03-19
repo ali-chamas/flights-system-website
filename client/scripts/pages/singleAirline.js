@@ -19,20 +19,7 @@ const getAirline = async () => {
     }
 }
 
-//this will get all the flights but i want all the flights with a specific airlineID
-const getFlights = async () => {
-    try {
-        const response = await fetch("http://localhost/flights-system-website/server/flights/flightsApi.php", {
-            method: "GET"
-        });
-        const responseData = await response.text();
-        return responseData;
-
-    } catch (error) {
-        console.error(error);
-        alert("Error occured while sending request");
-    }
-}
+//make a function to get all the flights but i want all the flights with a specific airlineID
 
 
 const getReviews = async () => {
@@ -60,8 +47,7 @@ const app = async () => {
     airline.innerHTML = airlineName;
     totalRating.innerHTML = rating;
 
-    const flightsData = await getFlights();
-    const flights = JSON.parse(flightsData);
+    //display flights with certain airlineID 
 
     const reviewsData = await getReviews();
     const reviews = JSON.parse(reviewsData);
