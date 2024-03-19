@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/96cf59c222.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/client/styles/common/index.css" />
+    <link rel="stylesheet" href="/client/styles/common/colors.css" />
+    <link rel="stylesheet" href="/client/styles//common/utilities.css" />
+    <link rel="stylesheet" href="/client/styles/pages/single-airline-page.css" />
+    <title>FlyMigo</title>
+  </head>
+  <body>
+    <header class="flex w-full justify-between align-center header-bg">
+      <h1>
+        <a href="/client/" class="special-font text-white flex center"
+          ><img src="/client/assets/logo.png" class="logo" alt="" />FlyMingo
+        </a>
+      </h1>
+      <nav class="text-white gap align-center">
+        <a href="/client/pages/airlines/airlines.html" class="text-white"
+          >airlines</a
+        >
+        <a href="/client/pages/flights/flights.html" class="text-white"
+          >flights</a
+        >
+        <a
+          href="/client/pages/auth/auth.html"
+          class="btn-style text-white special-font shadow bg-secondary"
+          id="header-login-btn"
+          >Login</a
+        >
+        <a
+          href="/pages/profile.html"
+          class="text-white profile-icon"
+          id="header-profile-btn"
+          ><i class="fa-solid fa-user"></i
+        ></a>
+      </nav>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <i class="fa-solid fa-bars text-white"></i>
+      </div>
+      <div
+        class="header-bg mobile-nav column gap align-center w-full mobile-display"
+        id="mobile-nav"
+      >
+        <a href="/pages/restaurants.html" class="text-white">Restaurants</a>
+        <a href="#about" class="text-white">About</a>
+        <a
+          href="/pages/login.html"
+          class="btn-style text-white special-font shadow bg-primary"
+          id="mobile-login-btn"
+          >Login</a
+        >
+        <a
+          href="/pages/profile.html"
+          class="text-white profile-icon"
+          id="mobile-profile-btn"
+          ><i class="fa-solid fa-user"></i
+        ></a>
+      </div>
+    </header>
+
+    <section class="flights">
+      <div id="airline-name"></div>
+      <div id="total-rating"></div>
+    </section>
+
+    <section class="flights-details">
+      <div class="split left">
+        <div class="centered">
+          <h2>List of flights</h2>
+          <div id="available-flights"></div>
+        </div>
+      </div>
+      <div class="split right">
+        <div class="centered">
+          <h2>Reviews</h2>
+          <div id="reviews"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="flex w-full align-center justify-evenly bg-primary">
+      <div class="flex column">
+        <a href="/client/pages/airlines/airlines.html">airlines</a>
+        <a href="/client/pages/flights/flights.html">flights</a>
+        <a href="/">Home</a>
+      </div>
+      <div class="flex">
+        <h1 class="text-primary">FlyMingo</h1>
+      </div>
+      <div class="flex column">
+        <a href="#">Instagram <i class="fa-brands fa-instagram"></i></a>
+        <a href="#">Facebook <i class="fa-brands fa-facebook"></i></a>
+        <a href="#">Donate</a>
+      </div>
+    </footer>
+    <script src="/client/scripts/common/apiUrl.js"></script>
+    <script src="/client/scripts/common/header.js"></script>
+    <script src="/client/scripts/pages/singleAirline.js"></script>
+  </body>
+</html>
