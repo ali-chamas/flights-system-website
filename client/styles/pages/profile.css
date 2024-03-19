@@ -1,0 +1,37 @@
+.section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.image-container img {
+    border-radius: 50%;
+    width: 30%;
+    margin: 20px 20px;
+}
+
+.account-details-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F0F7FD;
+    padding: 30px;
+    border-radius: 20px;
+
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F7FD;
+    padding: 30px;
+}
+
+.username {
+    display: flex;
+    justify-content: space-between;
+}
