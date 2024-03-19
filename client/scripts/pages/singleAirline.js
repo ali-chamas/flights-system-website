@@ -19,6 +19,19 @@ const getAirline = async () => {
     }
 }
 
+const getFlights = async () => {
+    try {
+        const response = await fetch("http://localhost/flights-system-website/server/flights/flightsApi.php", {
+            method: "GET"
+        });
+        const responseData = await response.text();
+        return responseData;
+
+    } catch (error) {
+        console.error(error);
+        alert("Error occured while sending request");
+    }
+}
 
 
 
