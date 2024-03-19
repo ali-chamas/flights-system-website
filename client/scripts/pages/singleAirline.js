@@ -73,7 +73,7 @@ const app = async () => {
         const createdAT = reviews.reviews[i].createdAT;
         const username = reviews.reviews[i].userName;
 
-        totalReviews.innerHTML += `${username} ${review} ${rating} created at ${createdAT} </br>`;
+        totalReviews.innerHTML += `${username} ${review} ${rating} created at ${createdAT} </br>`; // dont know if we need the created at
     }
 }
 
