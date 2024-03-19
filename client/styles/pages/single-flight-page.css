@@ -69,8 +69,28 @@
   max-width: 250px;
   max-height: 200px;
 }
-.rating-popup button {
+
+button {
   border: none;
+}
+
+.booking-popup {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.358);
+}
+
+.booking-popup form {
+  padding: 20px;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  position: relative;
+}
+
+.balance {
+  align-self: flex-end;
+  margin: 10px;
 }
 
 @media (max-width: 650px) {
