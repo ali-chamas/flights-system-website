@@ -1,1 +1,87 @@
+.flight {
+  padding: 10px 45px;
+}
 
+.ticket-card img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.ticket-card small {
+  color: gray;
+}
+.ticket-card {
+  border-radius: 20px;
+  gap: 20px;
+}
+
+.ticket-card button {
+  height: 30px;
+  border: none;
+}
+.reviews {
+  width: 50%;
+}
+.tickets {
+  width: 50%;
+}
+.review-container {
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.review-card {
+  border-radius: 20px;
+  width: 400px;
+}
+
+.rating-btn {
+  cursor: pointer;
+}
+.rating-btn:hover {
+  opacity: 0.85;
+}
+
+.rating-popup {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.358);
+}
+.rating-popup form {
+  padding: 20px;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+}
+.rating-popup input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid gray;
+}
+.rating-popup textarea {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid gray;
+  max-width: 250px;
+  max-height: 200px;
+}
+.rating-popup button {
+  border: none;
+}
+
+@media (max-width: 650px) {
+  .flight-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .review-card {
+    width: 300px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+}
