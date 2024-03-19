@@ -1,7 +1,7 @@
 .section {
   display: flex;
   justify-content: space-evenly;
-  padding: 20px 45px;
+  padding: 40px 45px;
 }
 
 .image-container {
@@ -36,6 +36,7 @@
   justify-content: space-between;
   border-bottom: 1px #d1d1d1 solid;
   padding: 10px;
+  font-size: 14px;
 }
 
 .email {
@@ -43,6 +44,8 @@
   justify-content: space-between;
   border-bottom: 1px #d1d1d1 solid;
   padding: 10px;
+  gap: 50px;
+  font-size: 14px;
 }
 
 .left-div {
@@ -79,4 +82,5 @@
   justify-content: space-between;
   border-bottom: 1px #d1d1d1 solid;
   padding: 10px;
+  gap: 20px;
 }
