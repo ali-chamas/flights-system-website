@@ -32,6 +32,20 @@ const getTickets = async () => {
     }
 }
 
+const getReviews = async () => {
+    try {
+        const response = await fetch("http://localhost/flights-system-website/server/reviews/view-flights-reviews.php", {
+            method: "GET"
+        });
+        const responseData = await response.text();
+        return responseData;
+
+    } catch (error) {
+        console.error(error);
+        alert("Error occured while sending request");
+    }
+}
+
 const app = async () =>{
     const data = await getFlight();
     const flight = JSON.parse(data);
