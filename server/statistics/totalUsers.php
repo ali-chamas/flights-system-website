@@ -7,7 +7,7 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 switch ($request_method) {
     case 'GET':
 
-        $response = getTotalBookings();
+        $response = getTotalUsers();
         break;
 
     default:
@@ -17,13 +17,13 @@ switch ($request_method) {
 
 echo json_encode($response);
 
-function getTotalBookings() {
+function getTotalUsers() {
     global $mysqli;
-    $query = $mysqli->query("SELECT * from bookings ");
+    $query = $mysqli->query("SELECT * from users ");
     if ($query) {
-        $bookings = $query->fetch_all(MYSQLI_ASSOC);
-        $totalBookings = count($bookings);
-        return ["status" => "Success", "totalUsers" => $totalBookings];
+        $users = $query->fetch_all(MYSQLI_ASSOC);
+        $totalUsers = count($users);
+        return ["status" => "Success", "totalUsers" => $totalUsers];
     } else {
         return ["status" => "No users", "totalUsers" => 0];
     }
