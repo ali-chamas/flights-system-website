@@ -98,7 +98,56 @@
     color: #007dd6;
   }
 
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .hidden {
+    display: none;
+  }
+
+  .edit-popup {
+    position: fixed;
+    background-color: #00000071;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .edit-popup > div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 30%;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .input {
+    min-width: 100px;
+    flex-grow: 1;
+    max-width: 50% - 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input > input {
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding: 0 10px;
+    height: 40px;
+  }
+
+  .popup-btn{
+    border: none;
+    background-color: #007dd6;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 20px;
+  }
   
   @media (max-width: 728px) {
     .divs-container {
