@@ -91,6 +91,14 @@
     border-bottom: 1px #d1d1d1 solid;
     padding: 10px;
   }
+
+  .btn {
+    border: none;
+    cursor: pointer;
+    color: #007dd6;
+  }
+
+
   
   @media (max-width: 728px) {
     .divs-container {
