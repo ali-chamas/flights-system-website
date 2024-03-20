@@ -148,6 +148,12 @@
     border-radius: 10px;
     margin: 20px;
   }
+
+  .flex-column-gap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
   
   @media (max-width: 728px) {
     .divs-container {
