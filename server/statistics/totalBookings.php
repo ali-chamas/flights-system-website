@@ -23,9 +23,9 @@ function getTotalBookings() {
     if ($query) {
         $bookings = $query->fetch_all(MYSQLI_ASSOC);
         $totalBookings = count($bookings);
-        return ["status" => "Success", "totalUsers" => $totalBookings];
+        return ["status" => "Success", "totalBookings" => $totalBookings];
     } else {
-        return ["status" => "No users", "totalUsers" => 0];
+        return ["status" => "No users", "totalBookings" => 0];
     }
 }
 
