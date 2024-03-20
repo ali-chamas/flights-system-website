@@ -6,12 +6,16 @@
   color: #007cd6;
 }
 
+.text-secondary{
+  color: #007dd6;
+}
+
 .bg-secondary {
   background-color: #007dd6;
 }
 
 .header-bg {
-  background-color: #007dd661;
+  background-color: #007dd64b;
 }
 
 .text-white {

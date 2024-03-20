@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/client/styles/common/colors.css" />
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
     <link rel="stylesheet" href="/client/styles/pages/admin-panel.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <link rel="stylesheet" href="/client/styles/pages/admin-bookings.css" />
     <title>FlyMigo</title>
   </head>
   <body>
@@ -50,14 +50,10 @@
         class="header-bg mobile-nav column gap align-center w-full mobile-display"
         id="mobile-nav"
       >
-        <a href="/client/pages/airlines/airlines.html" class="text-white"
-          >Airlines</a
-        >
-        <a href="/client/pages/flights/flights.html" class="text-white"
-          >Flgihts</a
-        >
+        <a href="/pages/restaurants.html" class="text-white">Restaurants</a>
+        <a href="#about" class="text-white">About</a>
         <a
-          href="/client/pages/auth/auth.html"
+          href="/pages/login.html"
           class="btn-style text-white special-font shadow bg-primary"
           id="mobile-login-btn"
           >Login</a
@@ -73,47 +69,43 @@
 
     <section class="flex column gap overview-section w-full">
       <div class="w-full flex justify-between line">
-        <h2>Overview</h2>
+        <h2>Bookings</h2>
       </div>
-
-        <div class="card-wrapper flex justify-evenly ">
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Total Bookings
-                        </span>
-                        <span class="amount-value" id="total-bookings">
-                            23,756
-                        </span>
-                  </div>
-            </div>
-
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Revenue
-                        </span>
-                        <span class="amount-value" id="revenue">
-                            1000 coin
-                        </span>
-                    </div>
-            </div>
-
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Number of Users
-                        </span>
-                        <span class="amount-value" id="number-of-users">
-                            8766
-                        </span>
+<div class="table-container flex center">
+    <table>
+        <thead class="bg-secondary">
+            <tr>
+                <th>Passenger</th>
+                <th>Flight</th>
+                <th>Amount Payed</th>
+                <th>Action</th>
+            </tr>
+                    </thead>
+                <tbody id="tbody">
+            </tbody>
+        <tfoot class="bg-secondary">
+           <tr>
+            <td colspan="7" id="total">
+                <div class="popup bg-secondary" id="edit-popup">
+                    <h2>Modify the booking<i class="fa-regular fa-x cancel-button" onclick="removePopup()"></i></h2>
+                    <div id="edit-form" class="edit-field">
+                        <div class="form-field">
+                            <h3>Passenger Name:</h3><input id="passenger-name" type="text" placeholder="Passenger Name" required/>
+                        </div>
+                        <div class="form-field">
+                            <h3>Flight:</h3><input id="flight" type="text" placeholder="Flight" required/>
+                        </div>
+                        <div class="form-field">
+                            <h3>Amount Payed:</h3><input id="currency-paid" type="text" placeholder="Coins Amount" required/>
+                        </div>
+                        <button type="submit" class="bg-secondary text-white" onclick="addTransaction()">Add</button>
                     </div>
                 </div>
-            </div>
-            <div class="w-full flex justify-between line statistics">
-              <h2>Statistics</h2>
-            </div>
-            <canvas id="myChart"></canvas>
+            </td>
+           </tr> 
+        </tfoot>
+    </table>
+</div>
     </section>
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
@@ -132,6 +124,6 @@
     </footer>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
-    <script src="/client/scripts/common/chart.js"></script>
+    <script src="/client/scripts/pages/adminBookings.js"></script>
   </body>
 </html>
