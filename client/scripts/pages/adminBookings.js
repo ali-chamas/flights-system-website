@@ -3,6 +3,8 @@ const newPassengerSeat = document.getElementById("new-passenger-seat");
 const bodyTable = document.getElementById("tbody")
 const btn = document.getElementById("btn")
 
+let elementid;
+
 const getAllBookings = () => {
     fetch("http://localhost/flights-system-website/server/bookings/updateBooking.php", {
         method: "GET",
@@ -20,11 +22,28 @@ const getAllBookings = () => {
 
 };
 
+const updateSeatNumber = (id, newSeatNumber) => {
+    fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}&newSeatNumber=${newSeatNumber}`, {
+        method: "PUT",
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            renderLoadedData(data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
 
 getAllBookings();
 
-function addPopup(){
+function addPopup(buttonid){
     editPopup.classList.add("open-popup");
+    const parentElement = buttonid.closest("tr");
+    elementid = parentElement.id;
 }
 
 
@@ -49,18 +68,22 @@ const addTable = (booking) => {
     <td class="text-align line-right">${booking.seatNumber}</td>
     <td class="text-align line-right">${booking.departure}</td>
     <td class="text-align line-right">${booking.destination}</td>
-    <td class="text-align"><button class="accept fa solid fa-pen-to-square text-secondary action-button" onclick=addPopup();></button>
-    <button class="reject fa-solid fa-x text-secondary action-button" onclick=deleteBooking();></button>
+    <td class="text-align"><button class="accept fa solid fa-pen-to-square text-secondary action-button" onclick=addPopup(this);></button>
+    <button class="reject fa-solid fa-x text-secondary action-button" onclick=deleteBooking(this);></button>
     </td>
     </tr> `;
 }
 
 const modifySeat = () => {
-    newSeatNumber = newPassengerSeat.val;
+    console.log('clicked');
+    newSeatNumber = newPassengerSeat.value;
+    console.log(newSeatNumber);
+    console.log(elementid);
     if (!newSeatNumber){
         alert("Chose a New Seat Number");
     }
     else{
-        updateSeatNumber(newSeatNumber);
+        console.log(id);
+        updateSeatNumber(id, newSeatNumber);
     }
 }
