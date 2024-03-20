@@ -15,6 +15,13 @@ const reviewInput = document.getElementById("review-input");
 const submitBtn = document.getElementById("submit-btn");
 const closeBtn = document.getElementById("close-btn");
 
+const bookingPopup = document.getElementById("booking-popup");
+const userBalance = document.getElementById("user-balance");
+const flightDestination = document.getElementById("flight-destination");
+const flightDate = document.getElementById("flight-date");
+const seatSelect = document.getElementById("sear-select");
+const ticketPrice = document.getElementById("ticket-price");
+
 let flight = {};
 let tickets = [];
 let reviews = [];
@@ -89,11 +96,23 @@ const generateTickets = () => {
         <b>price:</b>
         <small>${ticket.price}</small>
        </div>
-       <button class="btn-style bg-secondary text-white">Book</button>
+       <button class="btn-style bg-secondary text-white" onclick="openBookingPopup(${ticket.id})">Book</button>
     </div>
 
     `;
   });
+};
+
+const openBookingPopup = async (id) => {
+  bookingPopup.classList.remove("hidden");
+  bookingPopup.classList.add("flex");
+  const confirmBtn = document.getElementById("confirm-btn");
+  const closeBooking = document.getElementById("close-booking");
+  closeBooking.addEventListener("click", closeBookingPopup);
+};
+const closeBookingPopup = () => {
+  bookingPopup.classList.add("hidden");
+  bookingPopup.classList.remove("flex");
 };
 
 const generateReviews = () => {
