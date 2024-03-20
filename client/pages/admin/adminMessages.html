@@ -71,23 +71,56 @@
     </header>
 
     <section>
-        <div>
-            <h2>Incoming Messages</h2>
+        <div class="left-div">
+            <div>
+                <h2>Incoming Messages</h2>
+            </div>
+            <div class="message-card">
+                <div>
+                    <img src="/client/assets/profile-pic.png" />
+                </div>
+                <div class="user-message">
+                    <div class="user">
+                        <p>username</p>
+                    </div>
+                    <div class="message">
+                        <p>Hello! I want to inquire about a Flight</p>
+                    </div>
+                </div>
+                <div>
+                    <button>Chat back</button>
+                </div>
+            </div>
+
         </div>
-        <div class="message-card">
+
+        <div class="right-div">
+            <div>
+                <h2>Chat with User</h2>
+            </div>
             <div>
                 <img src="/client/assets/profile-pic.png" />
-            </div>
-            <div class="user-message">
-                <div class="user">
-                    <p>username</p>
+                <div class="chat-card">
+                    <div class="user-chat">
+                        <p>username</p>
+                    </div>
+                    <div class="chat">
+                        <p>Please send some coins i need to go on a flight</p>
+                    </div>
                 </div>
-                <div class="message">
-                    <p>Hello! I want to inquire about a Flight</p>
-                </div>
+                <p>11:20 PM</p>
             </div>
             <div>
-                <button>Chat back</button>
+                <div class="reply-card">
+                    <div class="admin">
+                        <p>You</p>
+                    </div>
+                    <div class="reply">
+                        <p>No coins for you go to hell.</p>
+                    </div>
+                </div>
+                <img src="/client/assets/profile-pic.png" />
+                <p>11:20 PM</p>
             </div>
         </div>
     </section>
@@ -109,6 +142,6 @@
     </footer>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
-    <script src="/client/scripts/pages/airlinesPage.js"></script>
+    
   </body>
 </html>
