@@ -59,6 +59,7 @@
 
 .right-div >p {
     font-size: small;
+    align-self: flex-end;
 }
 
 .img img {
@@ -116,4 +117,10 @@
 .input {
     padding: 15px 45px;
     border-radius: 20px;
+}
+
+@media (max-width: 900px) {
+    .section {
+        flex-direction: column;
+    }
 }
