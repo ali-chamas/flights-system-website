@@ -57,6 +57,10 @@
     gap: 20px;
 }
 
+.hidden {
+    display: none;
+}
+
 .right-div >p {
     font-size: small;
     align-self: flex-end;
@@ -117,6 +121,11 @@
 .input {
     padding: 15px 45px;
     border-radius: 20px;
+}
+
+.send-btn {
+    border: none;
+    cursor: pointer;
 }
 
 @media (max-width: 900px) {
