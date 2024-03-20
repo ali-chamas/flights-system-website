@@ -38,6 +38,12 @@
           id="header-login-btn"
           >Login</a
         >
+        <a
+          href="/pages/profile.html"
+          class="text-white profile-icon"
+          id="header-profile-btn"
+          ><i class="fa-solid fa-user"></i
+        ></a>
       </nav>
 
       <div class="mobile-menu" id="mobile-menu">
@@ -69,6 +75,77 @@
     </header>
 
     <section class="section">
+      <div class="popup hidden center" id="add-edit-popup">
+        <div class="popup-content">
+          <div class="input">
+            <label for="image">Image URL</label>
+            <input type="text" name="image" id="image-input"/>
+          </div>
+          <div class="input">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username-input"/>
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email-input"/>
+          </div>
+          <div class="popup-btns center">
+            <button class="popup-btn" id="update-btn">Update</button>
+            <button class="popup-btn" id="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup hidden center" id="add-booking-popup">
+        <div class="popup-content">
+          <div class="flex-column-gap">
+            <b>date</b>
+            <small>18/05/2024</small>
+           </div>
+           <div class="flex-column-gap">
+            <b>seats</b>
+            <small>20</small>
+           </div>
+           <div class="flex-column-gap">
+            <b>price</b>
+            <small>500 $</small>
+           </div>
+            <div class="popup-btns center">
+            <button class="popup-btn" id="back-btn">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup hidden center" id="add-request-popup">
+        <div class="popup-content">
+          <div class="input">
+            <label for="amount">Amount</label>
+            <input type="text" name="amount" id="amount-input"/>
+          </div>
+          <div class="popup-btns center">
+            <button class="popup-btn" id="amount-btn">Request</button>
+            <button class="popup-btn" id="amount-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup hidden center" id="add-reviews-popup">
+        <div class="popup-content">
+          <div class="flex-column-gap">
+            <div class="flex-justify-between">
+              <b>username</b>
+              <small><i class="fa-solid fa-star"></i> 4</small>
+            </div>
+            <small>love this</small>
+            <div class="popup-btns center">
+              <button class="popup-btn" id="reviews-back-btn">Back</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <div class="coins">
         <p>Coins</p>
         <p>0</p>
@@ -80,7 +157,7 @@
           </div>
           <div class="account-details-container">
             <h2>Account Details</h2>
-            <i class="fas fa-edit"></i>
+            <button class="btn" id="edit-btn"><i class="fas fa-edit"></i></button>
           </div>
           <div class="details-container">
             <div class="username">
@@ -97,15 +174,15 @@
           <div class="container">
             <div class="child">
               <p>Booking History</p>
-              <i class="fas fa-angle-right"></i>
+              <button class="btn" id="booking-btn"><i class="fas fa-angle-right"></i></button>
             </div>
             <div class="child">
               <p>Request Coins</p>
-              <i class="fas fa-angle-right"></i>
+              <button class="btn" id="request-btn"><i class="fas fa-angle-right"></i></button>
             </div>
             <div class="child">
               <p>Feedback and Reviews</p>
-              <i class="fas fa-angle-right"></i>
+              <button class="btn" id="reviews-btn"><i class="fas fa-angle-right"></i></button>
             </div>
           </div>
         </div>
@@ -129,5 +206,6 @@
     </footer>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
+    <script src="/client/scripts/pages/profile.js"></script>
   </body>
 </html>
