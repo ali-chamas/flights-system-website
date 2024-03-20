@@ -33,7 +33,10 @@ const getCertainBooking = (id, newFlightStatus) => {
             console.log(data.booking.seatID);
         })
         .then(() => {
-            updateSeatNumber(seatID, newFlightStatus);
+            modifyStatusRequest(seatID, newFlightStatus);
+        })
+        .then(()=>{
+            removePopup();
         })
         .catch((error) => {
             console.error(error);
@@ -42,7 +45,7 @@ const getCertainBooking = (id, newFlightStatus) => {
 };
 
 const modifyStatusRequest = (id, newFlightStatus) => {
-    fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}&newSeatNumber=${newSeatNumber}`, {
+    fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}&newSeatNumber=${newFlightStatus}`, {
         method: "PUT",
     })
         .then((response) => {
@@ -60,6 +63,8 @@ const modifyStatusRequest = (id, newFlightStatus) => {
 };
 
 const deleteBookingRequest = (id) => {
+    console.log(id);
+    console.log("deletedID");
     fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}`, {
         method: "DELETE",
     })
@@ -130,5 +135,6 @@ const modifyStatus = () => {
 const deleteBooking = (buttonid) => {
     const parentElement = buttonid.closest("tr");
     bookingId = parentElement.id;
-    deleteBookingRequest(buttonid);
+    console.log(bookingId)
+    deleteBookingRequest(bookingId);
 }

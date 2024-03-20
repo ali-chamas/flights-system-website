@@ -92,7 +92,7 @@ function updateBookingSeat($id, $newSeatNumber) {
     $query = $mysqli->prepare("UPDATE tickets SET status = ? WHERE id = ?");
     $query->bind_param("si", $newSeatNumber, $id);
     if ($query->execute()) {
-        return ["status" => "Booking seat updated successfully"];
+        return ["status" => "Flight status updated successfully"];
     } else {
         return ["status" => "Failed to update booking seat"];
     }
