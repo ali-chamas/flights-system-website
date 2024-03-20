@@ -9,3 +9,7 @@ const emailInput = document.getElementById("email-input");
 editButton.addEventListener("click", () => {
     addEditPopup.classList.remove("hidden");
 });
+
+cancelButton.addEventListener("click", () => {
+    addEditPopup.classList.add("hidden");
+});

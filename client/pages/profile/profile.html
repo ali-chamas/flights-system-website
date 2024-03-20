@@ -75,8 +75,8 @@
     </header>
 
     <section class="section">
-      <div class="edit-popup hidden center" id="add-edit-popup">
-        <div class="edit-popup-content">
+      <div class="popup hidden center" id="add-edit-popup">
+        <div class="popup-content">
           <div class="input">
             <label for="image">Image URL</label>
             <input type="text" name="image" id="image-input"/>
@@ -92,6 +92,19 @@
           <div class="popup-btns center">
             <button class="popup-btn" id="update-btn">Update</button>
             <button class="popup-btn" id="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup hidden center">
+        <div class="popup-content">
+          <div class="input">
+            <label for="amount">Amount</label>
+            <input type="text" name="amount" id="amount-input"/>
+          </div>
+          <div class="popup-btns center">
+            <button class="amount-btn" id="amount-btn">Amount</button>
+            <button class="popup-btn" id="amount-cancel-btn">Cancel</button>
           </div>
         </div>
       </div>
@@ -128,7 +141,7 @@
             </div>
             <div class="child">
               <p>Request Coins</p>
-              <button class="btn"><i class="fas fa-angle-right"></i></button>
+              <button class="btn" id="request-btn"><i class="fas fa-angle-right"></i></button>
             </div>
             <div class="child">
               <p>Feedback and Reviews</p>
