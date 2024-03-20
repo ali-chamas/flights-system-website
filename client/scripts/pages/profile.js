@@ -8,6 +8,8 @@ const emailInput = document.getElementById("email-input");
 const requestButton = document.getElementById("request-btn");
 const addRequestPopup = document.getElementById("add-request-popup");
 const amountCancelButton = document.getElementById("amount-cancel-btn");
+const addBookingPopup = document.getElementById("add-booking-popup");
+const bookingButton = document.getElementById("booking-btn");
 
 editButton.addEventListener("click", () => {
     addEditPopup.classList.remove("hidden");
@@ -24,3 +26,7 @@ requestButton.addEventListener("click", () => {
 amountCancelButton.addEventListener("click", () => {
     addRequestPopup.classList.add("hidden");
 });
+
+bookingButton.addEventListener("click", () => {
+    addBookingPopup.classList.remove("hidden");
+})
