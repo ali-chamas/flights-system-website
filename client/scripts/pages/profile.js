@@ -10,6 +10,7 @@ const addRequestPopup = document.getElementById("add-request-popup");
 const amountCancelButton = document.getElementById("amount-cancel-btn");
 const addBookingPopup = document.getElementById("add-booking-popup");
 const bookingButton = document.getElementById("booking-btn");
+const backButton = document.getElementById("back-btn");
 
 editButton.addEventListener("click", () => {
     addEditPopup.classList.remove("hidden");
@@ -29,4 +30,8 @@ amountCancelButton.addEventListener("click", () => {
 
 bookingButton.addEventListener("click", () => {
     addBookingPopup.classList.remove("hidden");
-})
+});
+
+backButton.addEventListener("click", () => {
+    addBookingPopup.classList.add("hidden");
+});
