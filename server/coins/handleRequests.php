@@ -6,7 +6,8 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 
 switch ($request_method) {
     case 'GET':
-                $get_requests_query = "SELECT * FROM requests";
+        $user_id = $_GET['user_id'];
+                $get_requests_query = "SELECT requests.*,users.email FROM requests join users on users.id=requests.userID";
                 $result = $mysqli->query($get_requests_query);
 
                 if ($result) {
