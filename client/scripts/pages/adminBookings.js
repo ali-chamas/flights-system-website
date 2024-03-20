@@ -19,10 +19,9 @@ const getAllBookings = () => {
         .catch((error) => {
             console.error(error);
         });
-
 };
 
-const getCertainBooking = (id, newSeatNumber) => {
+const getCertainBooking = (id, newFlightStatus) => {
     fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}`, {
         method: "GET",
     })
@@ -34,7 +33,7 @@ const getCertainBooking = (id, newSeatNumber) => {
             console.log(data.booking.seatID);
         })
         .then(() => {
-            updateSeatNumber(seatID, newSeatNumber);
+            updateSeatNumber(seatID, newFlightStatus);
         })
         .catch((error) => {
             console.error(error);
@@ -42,7 +41,7 @@ const getCertainBooking = (id, newSeatNumber) => {
 
 };
 
-const updateSeatNumber = (id, newSeatNumber) => {
+const modifyStatusRequest = (id, newFlightStatus) => {
     fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}&newSeatNumber=${newSeatNumber}`, {
         method: "PUT",
     })
@@ -60,6 +59,23 @@ const updateSeatNumber = (id, newSeatNumber) => {
         });
 };
 
+const deleteBookingRequest = (id) => {
+    fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}`, {
+        method: "DELETE",
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .then( () =>{
+            getAllBookings();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
 
 getAllBookings();
 
@@ -100,13 +116,19 @@ const addTable = (booking) => {
 
 const modifyStatus = () => {
     console.log('clicked');
-    newSeatNumber = newPassengerSeat.value;
-    console.log(newSeatNumber);
+    newFlightStatus = newPassengerSeat.value;
+    console.log(newFlightStatus);
     console.log(elementid);
-    if (!newSeatNumber){
+    if (!newFlightStatus){
         alert("Chose a New Seat Number");
     }
     else{
-        getCertainBooking(elementid, newSeatNumber);
+        getCertainBooking(elementid, newFlightStatus);
     }
+}
+
+const deleteBooking = (buttonid) => {
+    const parentElement = buttonid.closest("tr");
+    bookingId = parentElement.id;
+    deleteBookingRequest(buttonid);
 }
