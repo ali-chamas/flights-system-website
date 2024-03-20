@@ -1,7 +1,5 @@
 const userID = document.getElementById("user-id");
-const bodyTable = document.getElementById("tbody");
-// const deleteRequest = document.querySelectorAll("deleteRequest");
-// const acceptRequest = document.querySelectorAll("acceptRequest");
+const bodyTable = document.getElementById("tbody")
 
 const getAllRequests = () => {
     fetch("http://localhost/flights-system-website/server/coins/handleRequests.php", {
@@ -49,9 +47,11 @@ const acceptRequest = (id) => {
         console.log(data);
     })
     .then(() => {
-        getAllRequests()
+        deleteRequest(id);
     })
-
+    .then(() => {
+        getAllRequests();
+    })
     .catch((error) => {
         console.error(error);
     });
@@ -61,13 +61,11 @@ getAllRequests();
 
 function renderLoadedData(data){
     bodyTable.innerHTML = "";
-    if (data && data.requests) {
+
         data.requests.forEach((request) => {
             addTable(request);
         });
-    } else {
-        console.error("Invalid response data format");
-    }
+
 }
 
 function addTable(request){
