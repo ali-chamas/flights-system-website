@@ -17,6 +17,12 @@
     width: 75px;
 }
 
+.message-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .message-card {
     display: flex;
     justify-content: space-between;
