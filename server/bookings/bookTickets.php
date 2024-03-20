@@ -57,6 +57,10 @@ switch ($request_method) {
             if ($userCoins < $ticketPrice) {
                 echo json_encode(["status" => "Insufficient coins"]);
                 break;
+            }else{
+                $ticketPriceQuery = $mysqli->prepare("UPDATE users set coins = $userCoins - $ticketPrice WHERE id = $userID");
+            
+            $ticketPriceQuery->execute();
             }
 
             $book_ticket_query = $mysqli->prepare("INSERT INTO bookings (seatID, userID) VALUES (?, ?)");

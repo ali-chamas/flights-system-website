@@ -81,7 +81,10 @@
       <div class="flex justify-between w-full p flight-info">
         <div class="flex column gap w-full align-center tickets">
           <b>Tickets</b>
-          <div class="flex gap tickets-container" id="tickets-container"></div>
+          <div
+            class="flex gap column tickets-container"
+            id="tickets-container"
+          ></div>
         </div>
         <div class="flex column w-full gap align-center p reviews">
           <b>Reviews</b>
@@ -124,29 +127,22 @@
       </form>
     </div>
 
-    <div id="booking-popup" class="h-full w-full booking-popup center flex">
+    <div id="booking-popup" class="h-full w-full booking-popup center hidden">
       <form class="bg-primary flex column gap">
         <div class="balance flex gap align-center">
           <i class="fa-solid fa-coins rate-color"></i>
-          <small>3320</small>
+          <small id="user-balance"></small>
         </div>
-        <h3>Lebanon - France</h3>
-        <small class="text-gray">2023-03-20</small>
-        <select id="seat-select">
-          <option value="seat 1">seat 1</option>
-          <option value="seat 1">seat 1</option>
-          <option value="seat 1">seat 1</option>
-        </select>
-        <div class="flex gap align-center">
-          <label for="">vip?</label>
-          <input type="checkbox" id="vip-checkbox" />
-        </div>
-        <small class="text-gray">total: 260</small>
+        <h3 id="flight-destination"></h3>
+        <small class="text-gray" id="flight-date"></small>
+        <select id="seat-select"></select>
+
+        <small class="text-gray" id="ticket-price"></small>
         <div class="flex gap">
           <button
             type="button"
             class="btn-style bg-secondary text-white"
-            id="confirm-booking"
+            id="confirm-btn"
           >
             confirm
           </button>

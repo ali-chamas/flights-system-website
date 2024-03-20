@@ -15,9 +15,18 @@ const reviewInput = document.getElementById("review-input");
 const submitBtn = document.getElementById("submit-btn");
 const closeBtn = document.getElementById("close-btn");
 
+const bookingPopup = document.getElementById("booking-popup");
+const userBalance = document.getElementById("user-balance");
+const flightDestination = document.getElementById("flight-destination");
+const flightDate = document.getElementById("flight-date");
+const seatSelect = document.getElementById("seat-select");
+const ticketPrice = document.getElementById("ticket-price");
+
 let flight = {};
 let tickets = [];
 let reviews = [];
+let singleTicket = {};
+let seats = [];
 
 const userReview = {
   rating: 0,
@@ -54,6 +63,13 @@ const getTickets = async () => {
   }
 };
 
+const getSingleTicket = async (id) => {
+  tickets.forEach((t) => {
+    if (t.id == id) {
+      singleTicket = t;
+    }
+  });
+};
 const getReviews = async () => {
   try {
     const response = await fetch(
@@ -89,11 +105,94 @@ const generateTickets = () => {
         <b>price:</b>
         <small>${ticket.price}</small>
        </div>
-       <button class="btn-style bg-secondary text-white">Book</button>
+       <button class="btn-style bg-secondary text-white" onclick="openBookingPopup(${ticket.id})">Book</button>
     </div>
 
     `;
   });
+};
+
+const getSeats = async (id) => {
+  seats = [];
+  try {
+    const res = await fetch(`${apiURL}/seats/seatsApi.php?id=${id}`);
+    const data = await res.json();
+    if (data.status == "success") seats = data.seats;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const generateSeats = () => {
+  seatSelect.innerHTML = "";
+  seats.forEach((seat) => {
+    if (seat.isAvailable == 1) {
+      seatSelect.innerHTML += `<option value="${seat.id}">${seat.seatNumber}</option>`;
+    }
+  });
+};
+
+const bookTicket = async (id) => {
+  const currentUser = JSON.parse(window.localStorage.getItem("user"));
+  try {
+    const res = await fetch(`${apiURL}/bookings/bookTickets.php`, {
+      method: "POST",
+      body: JSON.stringify({ seatID: id, userID: 2 }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status == "success") {
+      closeBookingPopup();
+    } else {
+      alert(data.status);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getUser = async (id) => {
+  try {
+    const res = await fetch(`${apiURL}/users/usersApi.php?id=${id}`);
+    const data = await res.json();
+
+    return data.user;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const openBookingPopup = async (id) => {
+  const currentUser = JSON.parse(window.localStorage.getItem("user"));
+
+  bookingPopup.classList.remove("hidden");
+  bookingPopup.classList.add("flex");
+  await getSeats(id);
+  generateSeats();
+  await getSingleTicket(id);
+  const activeUser = await getUser(2);
+  console.log(activeUser);
+  document.getElementById("user-balance").innerText = activeUser.coins;
+  const confirmBtn = document.getElementById("confirm-btn");
+  const closeBooking = document.getElementById("close-booking");
+  closeBooking.addEventListener("click", closeBookingPopup);
+  document.getElementById(
+    "flight-destination"
+  ).innerText = `${flight.departure} - ${flight.destination}`;
+
+  document.getElementById("flight-date").innerText = singleTicket.date;
+  document.getElementById(
+    "ticket-price"
+  ).innerText = `total : ${singleTicket.price}`;
+
+  let seatID = 0;
+  seatSelect.addEventListener("change", (e) => (seatID = e.target.value));
+  confirmBtn.addEventListener("click", async () => await bookTicket(seatID));
+};
+
+const closeBookingPopup = () => {
+  bookingPopup.classList.add("hidden");
+  bookingPopup.classList.remove("flex");
 };
 
 const generateReviews = () => {
