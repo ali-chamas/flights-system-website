@@ -8,7 +8,7 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 if(!empty($_GET['id'])){
 
     $id=$_GET['id'];
-    $query = $mysqli->prepare('select message,sentAT,userID,receiver,name 
+    $query = $mysqli->prepare('select message,sentAT,userID,receiver,name,image 
     from messages
     join users on messages.userID = users.id
     Where userID=? or receiver = ?');
@@ -21,14 +21,15 @@ if(!empty($_GET['id'])){
         $response["status"] = "no messages found";
     } else {
         $messages = [];
-        $query->bind_result($message,$sentAt,$userID,$receiver,$name);
+        $query->bind_result($message,$sentAt,$userID,$receiver,$name,$image);
         while($query->fetch()) {
             $message=[
                 'message'=>$message,
                 'sentAt'=>$sentAt,
                 'sender'=>$userID,
                 'receiver'=>$receiver,
-                'senderUsername'=>$name
+                'senderUsername'=>$name,
+                'senderImage'=>$image
             ];
             $messages[] =$message;
         }
@@ -41,7 +42,7 @@ if(!empty($_GET['id'])){
     echo json_encode($response);  
 
 }else{
-    $query = $mysqli->prepare('select message,sentAT,userID,receiver,name
+    $query = $mysqli->prepare('select message,sentAT,userID,receiver,name,image
     from messages
     join users on messages.userID = users.id');
     $query->execute();
@@ -52,14 +53,15 @@ if(!empty($_GET['id'])){
         $response["status"] = "no messages found";
     } else {
         $messages = [];
-        $query->bind_result($message,$sentAt,$userID,$receiver,$name);
+        $query->bind_result($message,$sentAt,$userID,$receiver,$name,$image);
         while($query->fetch()) {
             $message=[
                 'message'=>$message,
                 'sentAt'=>$sentAt,
                 'sender'=>$userID,
                 'receiver'=>$receiver,
-                'senderUsername'=>$name
+                'senderUsername'=>$name,
+                'senderImage'=>$image
             ];
             $messages[] =$message;
         }
