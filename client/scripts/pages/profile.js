@@ -11,6 +11,9 @@ const amountCancelButton = document.getElementById("amount-cancel-btn");
 const addBookingPopup = document.getElementById("add-booking-popup");
 const bookingButton = document.getElementById("booking-btn");
 const backButton = document.getElementById("back-btn");
+const addReviewsPopup = document.getElementById("add-reviews-popup");
+const reviewsButton = document.getElementById("reviews-btn");
+const reviewsBackButton = document.getElementById("reviews-back-btn");
 
 editButton.addEventListener("click", () => {
     addEditPopup.classList.remove("hidden");
@@ -34,4 +37,12 @@ bookingButton.addEventListener("click", () => {
 
 backButton.addEventListener("click", () => {
     addBookingPopup.classList.add("hidden");
+});
+
+reviewsButton.addEventListener("click", () => {
+    addReviewsPopup.classList.remove("hidden");
+});
+
+reviewsBackButton.addEventListener("click", () => {
+    addReviewsPopup.classList.add("hidden");
 });

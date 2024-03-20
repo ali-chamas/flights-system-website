@@ -154,6 +154,11 @@
     flex-direction: column;
     gap: 10px;
   }
+
+.flex-justify-between {
+    display: flex;
+    justify-content: space-between;
+}
   
   @media (max-width: 728px) {
     .divs-container {
