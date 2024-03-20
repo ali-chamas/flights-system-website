@@ -57,5 +57,63 @@
     gap: 20px;
 }
 
+.right-div >p {
+    font-size: small;
+}
+
+.img img {
+    border-radius: 50%;
+    width: 40px;
+}
 
 
+.chat-div {
+    display: flex;
+
+}
+
+.chat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f7fd;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.user-chat p{
+    font-weight: bold;
+}
+
+.chat p {
+    font-size: small;
+}
+
+.reply-div {
+    display: flex;
+    align-self: flex-end;
+}
+
+.reply-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #cccecf;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.admin p {
+    font-weight: bold;
+}
+
+.reply p {
+    font-size: small;
+}
+
+.input {
+    padding: 15px 45px;
+    border-radius: 20px;
+}
