@@ -65,7 +65,6 @@ function renderLoadedData(data){
         data.requests.forEach((request) => {
             addTable(request);
         });
-
 }
 
 function addTable(request){

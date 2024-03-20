@@ -75,10 +75,10 @@
     <table>
         <thead class="bg-secondary">
             <tr>
-                <th>Passenger</th>
-                <th>Flight</th>
-                <th>Amount Payed</th>
-                <th>Action</th>
+                <th class="text-align">Passenger</th>
+                <th class="text-align">Flight</th>
+                <th class="text-align">Amount Payed</th>
+                <th class="text-align">Action</th>
             </tr>
                     </thead>
                 <tbody id="tbody">
@@ -90,15 +90,9 @@
                     <h2>Modify the booking<i class="fa-regular fa-x cancel-button" onclick="removePopup()"></i></h2>
                     <div id="edit-form" class="edit-field">
                         <div class="form-field">
-                            <h3>Passenger Name:</h3><input id="passenger-name" type="text" placeholder="Passenger Name" required/>
+                            <h3>Passenger Seat Number:</h3><input id="new-passenger-seat" type="text" placeholder="Passenger Name" required/>
                         </div>
-                        <div class="form-field">
-                            <h3>Flight:</h3><input id="flight" type="text" placeholder="Flight" required/>
-                        </div>
-                        <div class="form-field">
-                            <h3>Amount Payed:</h3><input id="currency-paid" type="text" placeholder="Coins Amount" required/>
-                        </div>
-                        <button type="submit" class="bg-secondary text-white" onclick="addTransaction()">Add</button>
+                        <button type="submit" class="bg-secondary text-white" onclick="modifySeat()">Add</button>
                     </div>
                 </div>
             </td>
