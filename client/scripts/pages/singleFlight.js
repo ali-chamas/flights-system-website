@@ -133,10 +133,11 @@ const generateSeats = () => {
 };
 
 const bookTicket = async (id) => {
+  const currentUser = JSON.parse(window.localStorage.getItem("user"));
   try {
     const res = await fetch(`${apiURL}/bookings/bookTickets.php`, {
       method: "POST",
-      body: JSON.stringify({ seatID: id, userID: 2 }),
+      body: JSON.stringify({ seatID: id, userID: currentUser.id }),
     });
     const data = await res.json();
     console.log(data);
@@ -147,6 +148,11 @@ const bookTicket = async (id) => {
 };
 
 const openBookingPopup = async (id) => {
+  const currentUser = JSON.parse(window.localStorage.getItem('user'));
+  if(currentUser){
+    document.getElementById('user-balance')=currentUser.coins
+  }
+  
   bookingPopup.classList.remove("hidden");
   bookingPopup.classList.add("flex");
   await getSeats(id);
