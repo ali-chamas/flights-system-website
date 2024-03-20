@@ -21,6 +21,11 @@ td{
     font-size: 14px;
 }
 
+.line-right{
+    border-right: 2px solid #007dd60c;
+    padding-bottom: 1.5rem;
+}
+
 .action-button{
     border: none;
     background-color: inherit;

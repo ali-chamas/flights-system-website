@@ -43,9 +43,13 @@ function renderLoadedData(data){
 
 function addTable(booking){
     bodyTable.innerHTML += ` <tr id="${booking.id}">
-    <td class="text-align">${booking.seatID}</td>
-    <td class="text-align">${booking.userID}</td>
-    <td class="text-align"><button class="accept fa solid fa-pen-to-square text-secondary action-button";></button>
+    <td class="text-align line-right">${booking.passenger_name}</td>
+    <td class="text-align line-right">${booking.id}</td>
+    <td class="text-align line-right">${booking.price}</td>
+    <td class="text-align line-right">${booking.seatNumber}</td>
+    <td class="text-align line-right">${booking.departure}</td>
+    <td class="text-align line-right">${booking.destination}</td>
+    <td class="text-align"><button class="accept fa solid fa-pen-to-square text-secondary action-button" onclick=addPopup();></button>
     <button class="reject fa-solid fa-x text-secondary action-button";></button>
     </td>
     </tr> `;

@@ -8,15 +8,16 @@ switch ($request_method) {
     case 'GET':
         if (isset($_GET["id"])) {
             $id = intval($_GET["id"]);
-            $response = getBooking($id);
+            $response = getBookingDetails($id);
         } else {
             $response = getAllBookings();
         }
         break;
 
-    case 'POST':
-        if (isset($_POST["id"])) {
-            $bookingId = $_POST["id"];
+    case 'DELETE':
+        $data = json_decode(file_get_contents('php://input'), true);
+        if (isset($data["id"])) {
+            $bookingId = $data["id"];
             $response = deleteBooking($bookingId);
         } else {
             $response = ["status" => "Booking ID is required"];
@@ -24,14 +25,16 @@ switch ($request_method) {
         break;
 
     case 'PUT':
-        if (isset($_GET["id"]) && isset($_GET["newSeatNumber"])) {
-            $bookingId = intval($_GET["id"]);
-            $newSeatNumber = intval($_GET["newSeatNumber"]);
+        parse_str(file_get_contents('php://input'), $putData);
+        if (isset($putData["id"]) && isset($putData["newSeatNumber"])) {
+            $bookingId = intval($putData["id"]);
+            $newSeatNumber = intval($putData["newSeatNumber"]);
             $response = updateBookingSeat($bookingId, $newSeatNumber);
         } else {
             $response = ["status" => "Booking ID and new seat number are required"];
         }
         break;
+
     default:
         $response = ["status" => "Unsupported request method"];
         break;
@@ -41,7 +44,12 @@ echo json_encode($response);
 
 function getAllBookings() {
     global $mysqli;
-    $query = $mysqli->query("SELECT * FROM bookings");
+    $query = $mysqli->query("SELECT bookings.id, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
+                            FROM bookings
+                            LEFT JOIN users ON bookings.userID = users.id
+                            LEFT JOIN seats ON bookings.seatID = seats.id
+                            LEFT JOIN tickets ON seats.ticketID = tickets.id
+                            LEFT JOIN flights ON tickets.flightID = flights.id");
     if ($query->num_rows > 0) {
         $bookings = $query->fetch_all(MYSQLI_ASSOC);
         return ["status" => "Success", "bookings" => $bookings];
@@ -50,9 +58,15 @@ function getAllBookings() {
     }
 }
 
-function getBooking($id) {
+function getBookingDetails($id) {
     global $mysqli;
-    $query = $mysqli->prepare("SELECT * FROM bookings WHERE id = ?");
+    $query = $mysqli->prepare("SELECT users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
+                                FROM bookings
+                                LEFT JOIN users ON bookings.userID = users.id
+                                LEFT JOIN seats ON bookings.seatID = seats.id
+                                LEFT JOIN tickets ON seats.ticketID = tickets.id
+                                LEFT JOIN flights ON tickets.flightID = flights.id
+                                WHERE bookings.id = ?");
     $query->bind_param("i", $id);
     $query->execute();
     $result = $query->get_result();
