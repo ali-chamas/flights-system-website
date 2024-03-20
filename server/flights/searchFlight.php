@@ -15,7 +15,7 @@ $query->store_result();
 $num_rows = $query->num_rows();
 
 if ($num_rows == 0) {
-    $response['status'] = "no tickets found";
+    $response['status'] = "failed";
 } else {
    
     $query->bind_result($id);
