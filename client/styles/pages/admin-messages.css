@@ -1,0 +1,11 @@
+.section {
+    display: flex;
+    gap: 20px;
+    padding: 40px 45px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+
