@@ -21,6 +21,19 @@ td{
     font-size: 14px;
 }
 
+.action-button{
+    border: none;
+    background-color: inherit;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.action-button:hover{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .popup{
     width: 60%;
     border-radius: 10px;
@@ -93,14 +106,5 @@ td{
     font-size: 24px;
     color: red;
     padding-right: 1rem;
-    cursor: pointer;
-}
-
-.row-remove{
-    cursor: pointer;
-    padding-left: 1.5rem;
-}
-
-.row-edit{
     cursor: pointer;
 }
