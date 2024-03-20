@@ -8,7 +8,10 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 if(!empty($_GET['id'])){
 
     $id=$_GET['id'];
-    $query = $mysqli->prepare('select message,sentAT,userID,receiver from messages Where userID=? or receiver = ?');
+    $query = $mysqli->prepare('select message,sentAT,userID,receiver,name 
+    from messages
+    join users on messages.userID = users.id
+    Where userID=? or receiver = ?');
     $query->bind_param('ii',$id,$id);
     $query->execute();
     $query->store_result();
@@ -18,13 +21,14 @@ if(!empty($_GET['id'])){
         $response["status"] = "no messages found";
     } else {
         $messages = [];
-        $query->bind_result($message,$sentAt,$userID,$receiver);
+        $query->bind_result($message,$sentAt,$userID,$receiver,$name);
         while($query->fetch()) {
             $message=[
                 'message'=>$message,
                 'sentAt'=>$sentAt,
                 'sender'=>$userID,
-                'receiver'=>$receiver
+                'receiver'=>$receiver,
+                'senderUsername'=>$name
             ];
             $messages[] =$message;
         }
@@ -37,7 +41,9 @@ if(!empty($_GET['id'])){
     echo json_encode($response);  
 
 }else{
-    $query = $mysqli->prepare('select message,sentAT,userID,receiver from messages');
+    $query = $mysqli->prepare('select message,sentAT,userID,receiver,name
+    from messages
+    join users on messages.userID = users.id');
     $query->execute();
     $query->store_result();
     $num_rows = $query->num_rows();
@@ -46,13 +52,14 @@ if(!empty($_GET['id'])){
         $response["status"] = "no messages found";
     } else {
         $messages = [];
-        $query->bind_result($message,$sentAt,$userID,$receiver);
+        $query->bind_result($message,$sentAt,$userID,$receiver,$name);
         while($query->fetch()) {
             $message=[
                 'message'=>$message,
                 'sentAt'=>$sentAt,
                 'sender'=>$userID,
-                'receiver'=>$receiver
+                'receiver'=>$receiver,
+                'senderUsername'=>$name
             ];
             $messages[] =$message;
         }
