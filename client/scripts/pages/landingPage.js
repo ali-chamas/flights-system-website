@@ -9,9 +9,13 @@ const searchFlight = async (destination) => {
       `${apiURL}/flights/searchFlight.php?destination=${destination}`
     );
     const data = await res.json();
-    window.location.assign(
-      `/client/pages/flights/singleFlightPage.html?id=${data.id}`
-    );
+    if (data.status == "failed") {
+      window.location.assign(`/client/pages/404/not-found.html`);
+    } else {
+      window.location.assign(
+        `/client/pages/flights/singleFlightPage.html?id=${data.id}`
+      );
+    }
   } catch (error) {
     console.log(error);
   }

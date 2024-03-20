@@ -187,7 +187,14 @@ const openBookingPopup = async (id) => {
 
   let seatID = 0;
   seatSelect.addEventListener("change", (e) => (seatID = e.target.value));
-  confirmBtn.addEventListener("click", async () => await bookTicket(seatID));
+  confirmBtn.addEventListener("click", async () => {
+    if (!currentUser) {
+      window.location.assign("/client/pages/auth/auth.html");
+      return;
+    } else {
+      await bookTicket(seatID);
+    }
+  });
 };
 
 const closeBookingPopup = () => {
