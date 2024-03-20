@@ -19,37 +19,6 @@ tbody{
 td{
     padding: 15px;
     font-size: 14px;
-    color: #333;
-}
-
-tfoot{
-    background: rgba(113, 99, 186, 255);
-    font-weight: bold;
-    color: #fff;
-}
-
-tfoot td{
-    padding: 15px;
-    color: #fff;
-}
-
-.remove-button{
-    color: red;
-    background: none;
-    cursor: pointer;
-}
-
-.table-container button{
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.16);
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.table-container button:hover{
-    opacity: 60%;
-    transition-duration: 0.2s;
 }
 
 .popup{

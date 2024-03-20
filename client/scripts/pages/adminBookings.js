@@ -27,15 +27,6 @@ function renderLoadedData(){
 
 renderLoadedData();
 
-function getSum(array){
-    sum=0;
-    for(let i = 0; i < array.length; i++){
-        sum += Number(array[i]);
-        console.log(Number(array[i]));
-    }
-    return sum;
-}
-
 function addPopup(){
     popupTransaction.classList.add("open-popup");
 }
@@ -67,13 +58,4 @@ function formIsEmpty(form) {
 
 function saveTransactions(allTransaction){
     localStorage.setItem("transactions", JSON.stringify(allTransaction));
-}
-
-function updateIncome(transaction){
-    if (transaction.transType == "EXPENSE"){
-        expense.push(transaction.transAmount);
-    }
-    else{
-        income.push(transaction.transAmount);
-    }
 }

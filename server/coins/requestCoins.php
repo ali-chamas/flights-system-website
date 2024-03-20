@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $check_user_query->store_result();
 
         if ($check_user_query->num_rows > 0) {
-            
             $insert_request_query = $mysqli->prepare("INSERT INTO requests (userID, amount) VALUES (?, ?)");
             $insert_request_query->bind_param("ii", $userID, $amount);
             if ($insert_request_query->execute()) {

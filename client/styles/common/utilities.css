@@ -73,6 +73,10 @@
   display: none;
 }
 
+.text-align{
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .h1-size {
     font-size: 30px;
