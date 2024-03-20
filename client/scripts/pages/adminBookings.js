@@ -22,7 +22,7 @@ const getAllBookings = () => {
 
 };
 
-const getCertainBooking = (id) => {
+const getCertainBooking = (id, newSeatNumber) => {
     fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}`, {
         method: "GET",
     })
@@ -30,7 +30,11 @@ const getCertainBooking = (id) => {
             return response.json();
         })
         .then((data) => {
+            seatID = data.booking.seatID;
             console.log(data.booking.seatID);
+        })
+        .then(() => {
+            updateSeatNumber(seatID, newSeatNumber);
         })
         .catch((error) => {
             console.error(error);
@@ -87,13 +91,14 @@ const addTable = (booking) => {
     <td class="text-align line-right">${booking.seatNumber}</td>
     <td class="text-align line-right">${booking.departure}</td>
     <td class="text-align line-right">${booking.destination}</td>
+    <td class="text-align line-right">${booking.status}</td>
     <td class="text-align"><button class="accept fa solid fa-pen-to-square text-secondary action-button" onclick=addPopup(this);></button>
     <button class="reject fa-solid fa-x text-secondary action-button" onclick=deleteBooking(this);></button>
     </td>
     </tr> `;
 }
 
-const modifySeat = () => {
+const modifyStatus = () => {
     console.log('clicked');
     newSeatNumber = newPassengerSeat.value;
     console.log(newSeatNumber);
@@ -102,7 +107,6 @@ const modifySeat = () => {
         alert("Chose a New Seat Number");
     }
     else{
-        getCertainBooking(elementid);
-        // updateSeatNumber(elementid, newSeatNumber);
+        getCertainBooking(elementid, newSeatNumber);
     }
 }
