@@ -1,7 +1,6 @@
+const rightDiv = document.getElementById("right-div");
 let messageCardContainer = document.getElementById("message-card-container");
-
 let messages = [];
-
 
 const getMessages = async () => {
     try {
@@ -15,10 +14,13 @@ const getMessages = async () => {
     }
 }
 
+
+
 const generateMessages = () => {
     messageCardContainer.innerHTML = "";
     messages.forEach((message) => {
-        messageCardContainer.innerHTML += `<div class="message-card">
+        if (message.receiver == null) {
+            messageCardContainer.innerHTML += `<div class="message-card">
         <div class="image">
         <img src="${message.senderImage}" />
         </div>
@@ -31,13 +33,17 @@ const generateMessages = () => {
             </div>
         </div>
         <div>
-        <button class="button">Chat back</button>
+        <button onclick="displayChat()" class="button">Chat back</button>
         </div>
         </div>`
+        };
+        
     });
 };
 
-
+const displayChat = () => {
+    rightDiv.classList.remove("hidden");
+}
 
 
 
