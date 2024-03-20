@@ -137,27 +137,42 @@ const bookTicket = async (id) => {
   try {
     const res = await fetch(`${apiURL}/bookings/bookTickets.php`, {
       method: "POST",
-      body: JSON.stringify({ seatID: id, userID: currentUser.id }),
+      body: JSON.stringify({ seatID: id, userID: 2 }),
     });
     const data = await res.json();
     console.log(data);
-    closeBookingPopup();
+    if (data.status == "success") {
+      closeBookingPopup();
+    } else {
+      alert(data.status);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getUser = async (id) => {
+  try {
+    const res = await fetch(`${apiURL}/users/usersApi.php?id=${id}`);
+    const data = await res.json();
+
+    return data.user;
   } catch (error) {
     console.log(error);
   }
 };
 
 const openBookingPopup = async (id) => {
-  const currentUser = JSON.parse(window.localStorage.getItem('user'));
-  if(currentUser){
-    document.getElementById('user-balance')=currentUser.coins
-  }
-  
+  const currentUser = JSON.parse(window.localStorage.getItem("user"));
+
   bookingPopup.classList.remove("hidden");
   bookingPopup.classList.add("flex");
   await getSeats(id);
   generateSeats();
   await getSingleTicket(id);
+  const activeUser = await getUser(2);
+  console.log(activeUser);
+  document.getElementById("user-balance").innerText = activeUser.coins;
   const confirmBtn = document.getElementById("confirm-btn");
   const closeBooking = document.getElementById("close-booking");
   closeBooking.addEventListener("click", closeBookingPopup);
