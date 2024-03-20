@@ -15,21 +15,19 @@ switch ($request_method) {
         break;
 
     case 'DELETE':
-        $data = json_decode(file_get_contents('php://input'), true);
-        if (isset($data["id"])) {
-            $bookingId = $data["id"];
-            $response = deleteBooking($bookingId);
+        if (!empty($_GET["id"])) {
+            $id = intval($_GET["id"]);
+            $response = deleteBooking($id);
         } else {
             $response = ["status" => "Booking ID is required"];
         }
         break;
 
     case 'PUT':
-        parse_str(file_get_contents('php://input'), $putData);
-        if (isset($putData["id"]) && isset($putData["newSeatNumber"])) {
-            $bookingId = intval($putData["id"]);
-            $newSeatNumber = intval($putData["newSeatNumber"]);
-            $response = updateBookingSeat($bookingId, $newSeatNumber);
+        if (!empty($_GET["id"]) && !empty($_GET["newSeatNumber"])) {
+            $id = intval($_GET["id"]);
+            $newSeatNumber = intval($_GET["newSeatNumber"]);
+            $response = updateBookingSeat($id, $newSeatNumber);
         } else {
             $response = ["status" => "Booking ID and new seat number are required"];
         }
@@ -44,7 +42,7 @@ echo json_encode($response);
 
 function getAllBookings() {
     global $mysqli;
-    $query = $mysqli->query("SELECT bookings.id, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
+    $query = $mysqli->query("SELECT bookings.id, bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
                             FROM bookings
                             LEFT JOIN users ON bookings.userID = users.id
                             LEFT JOIN seats ON bookings.seatID = seats.id
@@ -60,7 +58,7 @@ function getAllBookings() {
 
 function getBookingDetails($id) {
     global $mysqli;
-    $query = $mysqli->prepare("SELECT users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
+    $query = $mysqli->prepare("SELECT bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
                                 FROM bookings
                                 LEFT JOIN users ON bookings.userID = users.id
                                 LEFT JOIN seats ON bookings.seatID = seats.id
@@ -91,7 +89,7 @@ function deleteBooking($id) {
 
 function updateBookingSeat($id, $newSeatNumber) {
     global $mysqli;
-    $query = $mysqli->prepare("UPDATE bookings SET seatID = ? WHERE id = ?");
+    $query = $mysqli->prepare("UPDATE seats SET seatNumber = ? WHERE id = ?");
     $query->bind_param("ii", $newSeatNumber, $id);
     if ($query->execute()) {
         return ["status" => "Booking seat updated successfully"];
@@ -99,3 +97,4 @@ function updateBookingSeat($id, $newSeatNumber) {
         return ["status" => "Failed to update booking seat"];
     }
 }
+

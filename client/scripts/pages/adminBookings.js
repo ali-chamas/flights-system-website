@@ -22,6 +22,22 @@ const getAllBookings = () => {
 
 };
 
+const getCertainBooking = (id) => {
+    fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}`, {
+        method: "GET",
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data.booking.seatID);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+};
+
 const updateSeatNumber = (id, newSeatNumber) => {
     fetch(`http://localhost/flights-system-website/server/bookings/updateBooking.php?id=${id}&newSeatNumber=${newSeatNumber}`, {
         method: "PUT",
@@ -31,12 +47,15 @@ const updateSeatNumber = (id, newSeatNumber) => {
         })
         .then((data) => {
             console.log(data);
-            renderLoadedData(data);
+        })
+        .then( () =>{
+            getAllBookings();
         })
         .catch((error) => {
             console.error(error);
         });
 };
+
 
 getAllBookings();
 
@@ -83,7 +102,7 @@ const modifySeat = () => {
         alert("Chose a New Seat Number");
     }
     else{
-        console.log(id);
-        updateSeatNumber(id, newSeatNumber);
+        getCertainBooking(elementid);
+        // updateSeatNumber(elementid, newSeatNumber);
     }
 }
