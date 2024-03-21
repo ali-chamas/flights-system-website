@@ -1,5 +1,7 @@
 const rightDiv = document.getElementById("right-div");
 let messageCardContainer = document.getElementById("message-card-container");
+let userChatContainer = document.getElementById("user-chat-container");
+let adminReplyContainer = document.getElementById("admin-reply-container");
 let messages = [];
 
 const getMessages = async () => {
@@ -45,7 +47,44 @@ const displayChat = () => {
     rightDiv.classList.remove("hidden");
 }
 
+const generateChat = () => {
+    userChatContainer.innerHTML="";
+    adminReplyContainer.innerHTML="";
+    messages.forEach((message) => {
+        if (message.receiver == null) {
+            userChatContainer.innerHTML += `<div class="img-chat">
+            <div class="img">
+                <img src="${message.senderImage}" />
+            </div>
+            <div class="chat-card">
+                <div class="user-chat">
+                    <p>${message.senderUsername}</p>
+                </div>
+                <div class="chat">
+                    <p>${message.message}</p>
+                </div>
+            </div>
+        </div>
+        <p>${message.sentAt}</p>`
+        } else {
+            adminReplyContainer += `<div class="img-chat">
+            <div class="img">
+                <img src="${message.senderImage}" />
+            </div>
+            <div class="reply-card">
+                <div class="admin">
+                    <p>You</p>
+                </div>
+                <div class="reply">
+                    <p>${message.message}</p>
+                </div>
+            </div>
+        </div>
+        <p>${message.sentAt}</p>`
+        }
+    })
 
+}
 
 
 
