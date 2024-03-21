@@ -134,7 +134,7 @@ const addFlight = async () => {
     formData.append('image', imageInput.value);
     formData.append('airlineID', airlinesOptions.value);
 
-    addFlightRequest(formData);
+    await addFlightRequest(formData);
     await getFlights();
     generateFlights(flights);
     removePopup(addFlightPopup);
@@ -184,7 +184,7 @@ const editFlight = async () => {
     formData.append('image', imageInputEdit.value);
     formData.append('airlineID', airlinesOptionsEdit.value);
 
-    editFlightRequest(formData);
+    await editFlightRequest(formData);
     await getFlights();
     generateFlights(flights);
     removePopup(editFlightPopup);
