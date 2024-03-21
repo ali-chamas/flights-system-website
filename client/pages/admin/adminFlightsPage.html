@@ -22,11 +22,17 @@
         </a>
       </h1>
       <nav class="text-white gap align-center">
-        <a href="/client/pages/airlines/airlines.html" class="text-white"
-          >airlines</a
+        <a href="/client/pages/admin/adminCoinRequests.html" class="text-white"
+          >coin req</a
         >
-        <a href="/client/pages/flights/flights.html" class="text-white"
+        <a href="/client/pages/admin/adminFlightsPage.html" class="text-white"
           >flights</a
+        >
+        <a href="/client/pages/admin/adminMessages.html" class="text-white"
+          >messages</a
+        >
+        <a href="/client/pages/admin/adminBookings.html" class="text-white"
+          >bookings</a
         >
         <a
           href="/client/pages/auth/auth.html"
@@ -35,13 +41,12 @@
           >Login</a
         >
         <a
-          href="/pages/profile.html"
+          href="/client/pages/admin/adminPanel.html"
           class="text-white profile-icon"
           id="header-profile-btn"
           ><i class="fa-solid fa-user"></i
         ></a>
       </nav>
-
       <div class="mobile-menu" id="mobile-menu">
         <i class="fa-solid fa-bars text-white"></i>
       </div>
@@ -74,11 +79,17 @@
       <div class="w-full flex justify-between">
         <h2>Flights</h2>
         <div>
-        <button id="btn" class="btn-style text-white special-font shadow bg-secondary" onclick="openPopup(addFlightPopup)">Add</button>
-        <select id="flights-filter">
-          <option value="all">all</option>
-          <option value="rating">rating</option>
-        </select>
+          <button
+            id="btn"
+            class="btn-style text-white special-font shadow bg-secondary"
+            onclick="openPopup(addFlightPopup)"
+          >
+            Add
+          </button>
+          <select id="flights-filter">
+            <option value="all">all</option>
+            <option value="rating">rating</option>
+          </select>
         </div>
       </div>
       <div
@@ -87,18 +98,32 @@
       ></div>
     </section>
     <div class="popup bg-secondary" id="add-flight-popup">
-        <h2>Add Flight<i class="fa-regular fa-x cancel-button" onclick="removePopup(addFlightPopup)"></i></h2>
-        <div id="add-form" class="edit-field flex column center gap">
-            <div class="form-field w-full flex column">
-                <h3>AirlineID:</h3><select id="airline"> 
-                </select>
-                <h3>Departure:</h3><input id="departure" type="text" placeholder="" required>
-                <h3>Arrival:</h3><input id="arrival" type="text" placeholder="" required>
-                <h3>DepartureTime:</h3><input id="departure-time" type="text" placeholder="" required>
-                <h3>ArrivalTime:</h3><input id="arrival-time" type="text" placeholder="" required>
-                <h3>Image:</h3><input id="image" type="text" placeholder="" required> 
-            </div>
-            <button id="btn" type="submit" class="bg-secondary text-white" onclick="addFlight()">Confirm</button>
+      <h2>
+        Add Flight<i
+          class="fa-regular fa-x cancel-button"
+          onclick="removePopup(addFlightPopup)"
+        ></i>
+      </h2>
+      <div id="add-form" class="edit-field flex column center gap">
+        <div class="form-field w-full flex column">
+          <h3>AirlineID:</h3>
+          <select id="airline"></select>
+          <h3>Departure:</h3>
+          <input id="departure" type="text" placeholder="" required />
+          <h3>Arrival:</h3>
+          <input id="arrival" type="text" placeholder="" required />
+          <h3>DepartureTime:</h3>
+          <input id="departure-time" type="text" placeholder="" required />
+          <h3>ArrivalTime:</h3>
+          <input id="arrival-time" type="text" placeholder="" required />
+          <h3>Image:</h3>
+          <input id="image" type="text" placeholder="" required />
+        </div>
+        <button
+          id="btn"
+          type="submit"
+          class="bg-secondary text-white"
+          onclick="addFlight()">Confirm</button>
         </div>
     </div>
     <div class="popup bg-secondary" id="edit-flight-popup">
@@ -113,8 +138,11 @@
                 <h3>ArrivalTime:</h3><input id="arrival-timeEdit" type="text" placeholder="" required>
                 <h3>Image:</h3><input id="imageEdit" type="text" placeholder="" required> 
             </div>
-            <button type="submit" class="bg-secondary text-white" onclick="editFlight()">Confirm</button>
-        </div>
+            <button type="submit" class="bg-secondary text-white" onclick="editFlight()"
+        >
+          Confirm
+        </button>
+      </div>
     </div>
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">

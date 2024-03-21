@@ -1,3 +1,3 @@
-if (JSON.parse(existingUser).isAdmin == 0) {
+if (JSON.parse(window.localStorage.getItem("session")).isAdmin == 0) {
   window.location.assign("/client");
 }

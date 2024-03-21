@@ -23,11 +23,17 @@
         </a>
       </h1>
       <nav class="text-white gap align-center">
-        <a href="/client/pages/airlines/airlines.html" class="text-white"
-          >airlines</a
+        <a href="/client/pages/admin/adminCoinRequests.html" class="text-white"
+          >coin req</a
         >
-        <a href="/client/pages/flights/flights.html" class="text-white"
+        <a href="/client/pages/admin/adminFlightsPage.html" class="text-white"
           >flights</a
+        >
+        <a href="/client/pages/admin/adminMessages.html" class="text-white"
+          >messages</a
+        >
+        <a href="/client/pages/admin/adminBookings.html" class="text-white"
+          >bookings</a
         >
         <a
           href="/client/pages/auth/auth.html"
@@ -36,7 +42,7 @@
           >Login</a
         >
         <a
-          href="/pages/profile.html"
+          href="/client/pages/admin/adminPanel.html"
           class="text-white profile-icon"
           id="header-profile-btn"
           ><i class="fa-solid fa-user"></i
@@ -71,43 +77,55 @@
       <div class="w-full flex justify-between line">
         <h2>Bookings</h2>
       </div>
-<div class="table-container flex center">
-    <table>
-        <thead class="bg-secondary">
+      <div class="table-container flex center">
+        <table>
+          <thead class="bg-secondary">
             <tr>
-                <th class="text-align line-right">Passenger name</th>
-                <th class="text-align line-right">Booking ID</th>
-                <th class="text-align line-right">Price</th>
-                <th class="text-align line-right">SeatNumber</th>
-                <th class="text-align line-right">Departure</th>
-                <th class="text-align line-right">Destination</th>
-                <th class="text-align line-right">Status</th>
-                <th class="text-align">Action</th>
+              <th class="text-align line-right">Passenger name</th>
+              <th class="text-align line-right">Booking ID</th>
+              <th class="text-align line-right">Price</th>
+              <th class="text-align line-right">SeatNumber</th>
+              <th class="text-align line-right">Departure</th>
+              <th class="text-align line-right">Destination</th>
+              <th class="text-align line-right">Status</th>
+              <th class="text-align">Action</th>
             </tr>
-                    </thead>
-                <tbody id="tbody">
-            </tbody>
-        <tfoot class="bg-secondary">
-           <tr>
-            <td colspan="8" id="total">
+          </thead>
+          <tbody id="tbody"></tbody>
+          <tfoot class="bg-secondary">
+            <tr>
+              <td colspan="8" id="total">
                 <div class="popup bg-secondary" id="edit-popup">
-                    <h2>Modify Flight Status<i class="fa-regular fa-x cancel-button" onclick="removePopup()"></i></h2>
-                    <div id="edit-form" class="edit-field flex column center gap">
-                        <div class="form-field w-full">
-                            <h3>Flight Status:</h3><select id="new-passenger-seat" class="w-full p"> 
-                              <option value="ongoing">Ongoing</option>
-                              <option value="cancelled">Cancelled</option>
-                              <option value="arrived">Arrived</option>
-                            </select>
-                        </div>
-                        <button id="btn" type="submit" class="bg-secondary text-white" onclick="modifyStatus()">Confirm</button>
+                  <h2>
+                    Modify SeatNumber<i
+                      class="fa-regular fa-x cancel-button"
+                      onclick="removePopup()"
+                    ></i>
+                  </h2>
+                  <div id="edit-form" class="edit-field flex column center gap">
+                    <div class="form-field w-full">
+                      <h3>Flight Status:</h3>
+                      <select id="new-passenger-seat" class="w-full p">
+                        <option value="ongoing">Ongoing</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="arrived">Arrived</option>
+                      </select>
                     </div>
+                    <button
+                      id="btn"
+                      type="submit"
+                      class="bg-secondary text-white"
+                      onclick="modifyStatus()"
+                    >
+                      Confirm
+                    </button>
+                  </div>
                 </div>
-            </td>
-           </tr> 
-        </tfoot>
-    </table>
-</div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </section>
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
@@ -124,6 +142,7 @@
         <a href="#">Donate</a>
       </div>
     </footer>
+    <script src="/client/scripts/common/adminSecurity.js"></script>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
     <script src="/client/scripts/pages/adminBookings.js"></script>

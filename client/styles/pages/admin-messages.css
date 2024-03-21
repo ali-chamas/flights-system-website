@@ -1,151 +1,157 @@
 .section {
-    display: flex;
-    gap: 20px;
-    padding: 40px 45px;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  padding: 40px 45px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .left-div {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .image img {
-    border-radius: 50%;
-    width: 75px;
+  border-radius: 50%;
+  width: 75px;
 }
 
 .message-card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .message-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f0f7fd;
-    border-radius: 20px;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f7fd;
+  border-radius: 20px;
+  gap: 20px;
 }
 
 .user-message {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .user p {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-.message p{
-    font-size: small;
+.message p {
+  font-size: small;
 }
 
 .button {
-    border: none;
-    cursor: pointer;
-    background-color: #007dd6;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: #007dd6;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
 }
 
 .right-div {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.messages-container {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
-
-.chat-div >p {
-    font-size: small;
-    align-self: flex-end;
+.chat-div > p {
+  font-size: small;
+  align-self: flex-end;
 }
 
 .img img {
-    border-radius: 50%;
-    width: 40px;
+  border-radius: 50%;
+  width: 40px;
 }
 
 .img-chat {
-    display: flex;
+  display: flex;
 }
 .chat-div {
-    display: flex;
-    flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #f0f7fd;
-    border-radius: 20px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f0f7fd;
+  border-radius: 20px;
+  gap: 20px;
 }
 
-.user-chat p{
-    font-weight: bold;
+.user-chat p {
+  font-weight: bold;
 }
 
 .chat p {
-    font-size: small;
+  font-size: small;
 }
 
 .reply-div {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
 }
 
-.reply-div >p {
-    font-size: small;
-    align-self: flex-end;
+.reply-div > p {
+  font-size: small;
+  align-self: flex-end;
 }
 
 .reply-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #cccecf;
-    border-radius: 20px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #cccecf;
+  border-radius: 20px;
+  gap: 20px;
 }
 
 .admin p {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .reply p {
-    font-size: small;
+  font-size: small;
 }
 
 .input {
-    padding: 15px 45px;
-    border-radius: 20px;
+  padding: 15px 45px;
+  border-radius: 20px;
 }
 
 .send-btn {
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
-    .section {
-        flex-direction: column;
-    }
+  .section {
+    flex-direction: column;
+  }
 }

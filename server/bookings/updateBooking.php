@@ -42,7 +42,7 @@ echo json_encode($response);
 
 function getAllBookings() {
     global $mysqli;
-    $query = $mysqli->query("SELECT bookings.id, bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price, tickets.status
+    $query = $mysqli->query("SELECT bookings.id, bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber,tickets.id as ticketID, tickets.price, tickets.status
                             FROM bookings
                             LEFT JOIN users ON bookings.userID = users.id
                             LEFT JOIN seats ON bookings.seatID = seats.id
@@ -58,7 +58,7 @@ function getAllBookings() {
 
 function getBookingDetails($id) {
     global $mysqli;
-    $query = $mysqli->prepare("SELECT bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
+    $query = $mysqli->prepare("SELECT bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.id as ticketID,tickets.price
                                 FROM bookings
                                 LEFT JOIN users ON bookings.userID = users.id
                                 LEFT JOIN seats ON bookings.seatID = seats.id

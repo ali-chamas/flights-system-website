@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/client/styles/common/index.css" />
     <link rel="stylesheet" href="/client/styles/common/colors.css" />
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
-    <link rel="stylesheet" href="/client/styles/pages/admin-messages.css"/>
+    <link rel="stylesheet" href="/client/styles/pages/admin-messages.css" />
     <title>FlyMigo</title>
   </head>
   <body>
@@ -22,11 +22,17 @@
         </a>
       </h1>
       <nav class="text-white gap align-center">
-        <a href="/client/pages/airlines/airlines.html" class="text-white"
-          >airlines</a
+        <a href="/client/pages/admin/adminCoinRequests.html" class="text-white"
+          >coin req</a
         >
-        <a href="/client/pages/flights/flights.html" class="text-white"
+        <a href="/client/pages/admin/adminFlightsPage.html" class="text-white"
           >flights</a
+        >
+        <a href="/client/pages/admin/adminMessages.html" class="text-white"
+          >messages</a
+        >
+        <a href="/client/pages/admin/adminBookings.html" class="text-white"
+          >bookings</a
         >
         <a
           href="/client/pages/auth/auth.html"
@@ -35,7 +41,7 @@
           >Login</a
         >
         <a
-          href="/pages/profile.html"
+          href="/client/pages/admin/adminPanel.html"
           class="text-white profile-icon"
           id="header-profile-btn"
           ><i class="fa-solid fa-user"></i
@@ -71,32 +77,36 @@
     </header>
 
     <section class="section">
-        <div class="left-div">
-            <div>
-                <h2>Incoming Messages</h2>
-            </div>
-            <div class="message-card-container" id="message-card-container">
-                
-            </div>
+      <div class="left-div">
+        <div>
+          <h2>Incoming Messages</h2>
         </div>
+        <div class="message-card-container" id="message-card-container"></div>
+      </div>
 
-        <div class="right-div hidden" id="right-div">
-            <div>
-                <h2>Chat with User</h2>
-            </div>
-            <div class="chat-div" id="user-chat-container">
+      <div class="right-div hidden" id="right-div">
+        <div class="flex column gap messages-container">
+          <div>
+            <h2>Chat with User</h2>
+          </div>
+          <div class="chat-div" id="user-chat-container"></div>
 
-            </div>
-            
-            <div class="reply-div" id="admin-reply-container">
+          <div class="reply-div" id="admin-reply-container"></div>
 
-            </div>
-            
-            <div>
-                <input type="text" class="input" id="input" placeholder="type something here"/>
-                <button class="send-btn" id="send-btn"><i class="fa fa-send-o"></i></button>
-            </div>
+          <div></div>
         </div>
+        <div>
+          <input
+            type="text"
+            class="input"
+            id="input"
+            placeholder="type something here"
+          />
+          <button class="send-btn" id="send-btn">
+            <i class="fa fa-send-o"></i>
+          </button>
+        </div>
+      </div>
     </section>
 
     <footer class="flex w-full align-center justify-evenly bg-primary">

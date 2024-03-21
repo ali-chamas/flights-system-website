@@ -1,10 +1,6 @@
 const editButton = document.getElementById("edit-btn");
 const addEditPopup = document.getElementById("add-edit-popup");
-// const updateButton = document.getElementById("update-btn");
-// const cancelButton = document.getElementById("cancel-btn");
-// const imageInput = document.getElementById("image-input");
-// const usernameInput = document.getElementById("username-input");
-// const emailInput = document.getElementById("email-input");
+
 const cancelButton = document.getElementById("cancel-btn");
 const requestButton = document.getElementById("request-btn");
 const addRequestPopup = document.getElementById("add-request-popup");
@@ -68,16 +64,20 @@ const imageInput = document.getElementById("image-input");
 const usernameInput = document.getElementById("username-input");
 const emailInput = document.getElementById("email-input");
 
+const logoutBtn = document.getElementById("logout-btn");
+
 let user = {};
 let bookings = [];
 let flightsReviews = [];
 let airlinesReviews = [];
 
 const fetchUser = async () => {
-  const currentUser = window.localStorage.getItem("user");
+  const currentUser = JSON.parse(window.localStorage.getItem("session"));
 
   try {
-    const res = await fetch(`${apiURL}/users/usersApi.php?id=${2}`);
+    const res = await fetch(
+      `${apiURL}/users/usersApi.php?id=${currentUser.id}`
+    );
     const data = await res.json();
     if (data.status == "Success") {
       user = data.user;
@@ -99,7 +99,9 @@ const fetchBookings = async () => {
 
 const fetchFlightsReviews = async () => {
   try {
-    const res = await fetch(`${apiURL}/users/getFlightsReviews.php?id=2`);
+    const res = await fetch(
+      `${apiURL}/users/getFlightsReviews.php?id=${user.id}`
+    );
     const data = await res.json();
     if (data.status == "success") {
       flightsReviews = data.reviews;
@@ -110,7 +112,9 @@ const fetchFlightsReviews = async () => {
 };
 const fetchAirlinesReviews = async () => {
   try {
-    const res = await fetch(`${apiURL}/users/getAirlinesReviews.php?id=2`);
+    const res = await fetch(
+      `${apiURL}/users/getAirlinesReviews.php?id=${user.id}`
+    );
     const data = await res.json();
     if (data.status == "success") {
       airlinesReviews = data.reviews;
@@ -131,15 +135,15 @@ const generateBookings = () => {
   bookingsContainer.innerHTML = "";
   bookings.forEach((b) => {
     bookingsContainer.innerHTML += ` <div class="flex gap p bg-primary">
-        <b>${b.departure} - ${b.destination}</b>
+    <b>${b.departure} - ${b.destination}</b>
         <small class="text-gray">${b.date}</small>
         <small>${b.price} coins</small>
         <small>${b.seatNumber}</small>
         <div>
           <small>${b.status}</small>
-          <small class="text-danger" onclick="deleteSingleBooking(${b.id})">Delete</small>
+          <small class="text-danger" onclick="deleteSingleBooking(${b.id})">Cancel</small>
 
-        </div>
+          </div>
       </div>`;
   });
 };
@@ -151,7 +155,7 @@ const generateReviews = () => {
     reviewsContainer.innerHTML += `<div class="bg-primary p flex column">
         <div class="flex justify-between w-full">
           <small>
-            <i class="fa-solid fa-star rate-color" ></i>
+          <i class="fa-solid fa-star rate-color" ></i>
             ${r.rating}
           </small>
           <small>
@@ -161,51 +165,56 @@ const generateReviews = () => {
         </div>
         <small class="text-gray">
           ${r.review}
-        </small>
-    
-      </div>`;
+          </small>
+          
+          </div>`;
   });
   airlinesReviews.forEach((r) => {
     reviewsContainer.innerHTML += `<div class="bg-primary p flex column">
         <div class="flex justify-between w-full">
-          <small>
-            <i class="fa-solid fa-star rate-color" ></i>
+        <small>
+        <i class="fa-solid fa-star rate-color" ></i>
             ${r.rating}
           </small>
           <small>
           ${r.airlineName}
           <small/>
           
-        </div>
-        <small class="text-gray">
+          </div>
+          <small class="text-gray">
           ${r.review}
-        </small>
-    
-      </div>`;
+          </small>
+          
+          </div>`;
   });
 };
 
 const deleteSingleBooking = async (id) => {
   try {
-    const res = await fetch(`${apiURL}/bookings/updateBooking.php?id=${id}`, {
+    const res = await fetch(`${apiURL}/bookings/cancelBooking.php?id=${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
     console.log(data);
     await fetchBookings();
     generateBookings();
+    await fetchUser();
+    generateUserInfo();
   } catch (error) {}
 };
 
 const sendRequest = async () => {
   try {
-    const res = await fetch(`${apiURL}/coins/requestCoins.php?userID=2`, {
-      method: "POST",
-      body: JSON.stringify({ amount: amountInput.value }),
-    });
+    const res = await fetch(
+      `${apiURL}/coins/requestCoins.php?userID=${user.id}`,
+      {
+        method: "POST",
+        body: JSON.stringify({ amount: amountInput.value }),
+      }
+    );
     const data = await res.json();
     console.log(data);
-    if (data.status == "success") {
+    if (data.status == "Request submitted successfully") {
       addRequestPopup.classList.add("hidden");
       alert("Request sent");
     }
@@ -218,19 +227,27 @@ const newUser = {
   image: "",
 };
 const changeProfile = async () => {
-  const user = new FormData();
-  user.append("name", newUser.name);
-  user.append("password", newUser.password);
-  user.append("image", newUser.image);
+  const userInfo = new FormData();
+  userInfo.append("name", newUser.name);
+  userInfo.append("password", newUser.password);
+  userInfo.append("image", newUser.image);
   try {
-    const res = await fetch(`${apiURL}/users/editUser.php?id=2`, {
+    const res = await fetch(`${apiURL}/users/editUser.php?id=${user.id}`, {
       method: "POST",
-      body: user,
+      body: userInfo,
     });
     const data = await res.json();
+
     await fetchUser();
     generateUserInfo();
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const logout = () => {
+  window.localStorage.removeItem("session");
+  window.location.assign("/client");
 };
 
 const app = async () => {
@@ -257,6 +274,7 @@ const app = async () => {
   );
 
   updateButton.addEventListener("click", changeProfile);
+  logoutBtn.addEventListener("click", logout);
 };
 
 app();

@@ -23,11 +23,17 @@
         </a>
       </h1>
       <nav class="text-white gap align-center">
-        <a href="/client/pages/airlines/airlines.html" class="text-white"
-          >airlines</a
+        <a href="/client/pages/admin/adminCoinRequests.html" class="text-white"
+          >coin req</a
         >
-        <a href="/client/pages/flights/flights.html" class="text-white"
+        <a href="/client/pages/admin/adminFlightsPage.html" class="text-white"
           >flights</a
+        >
+        <a href="/client/pages/admin/adminMessages.html" class="text-white"
+          >messages</a
+        >
+        <a href="/client/pages/admin/adminBookings.html" class="text-white"
+          >bookings</a
         >
         <a
           href="/client/pages/auth/auth.html"
@@ -36,7 +42,7 @@
           >Login</a
         >
         <a
-          href="/pages/profile.html"
+          href="/client/pages/admin/adminPanel.html"
           class="text-white profile-icon"
           id="header-profile-btn"
           ><i class="fa-solid fa-user"></i
@@ -76,44 +82,32 @@
         <h2>Overview</h2>
       </div>
 
-        <div class="card-wrapper flex justify-evenly ">
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Total Bookings
-                        </span>
-                        <span class="amount-value" id="total-bookings">
-                            23,756
-                        </span>
-                  </div>
-            </div>
+      <div class="card-wrapper flex justify-evenly">
+        <div class="income-card bg-primary">
+          <div class="amount center">
+            <span class="title"> Total Bookings </span>
+            <span class="amount-value" id="total-bookings"> 23,756 </span>
+          </div>
+        </div>
 
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Revenue
-                        </span>
-                        <span class="amount-value" id="revenue">
-                            1000 coin
-                        </span>
-                    </div>
-            </div>
+        <div class="income-card bg-primary">
+          <div class="amount center">
+            <span class="title"> Revenue </span>
+            <span class="amount-value" id="revenue"> 1000 coin </span>
+          </div>
+        </div>
 
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Number of Users
-                        </span>
-                        <span class="amount-value" id="number-of-users">
-                            8766
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full flex justify-between line statistics">
-              <h2>Statistics</h2>
-            </div>
-            <canvas id="myChart"></canvas>
+        <div class="income-card bg-primary">
+          <div class="amount center">
+            <span class="title"> Number of Users </span>
+            <span class="amount-value" id="number-of-users"> 8766 </span>
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex justify-between line statistics">
+        <h2>Statistics</h2>
+      </div>
+      <canvas id="myChart"></canvas>
     </section>
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
@@ -130,6 +124,7 @@
         <a href="#">Donate</a>
       </div>
     </footer>
+    <script src="/client/scripts/common/adminSecurity.js"></script>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
     <script src="/client/scripts/common/chart.js"></script>
