@@ -71,20 +71,30 @@
     </header>
 
     <section class="section">
-      <div class="left-div">
-        <div>
-          <h2>Incoming Messages</h2>
-        </div>
-        <div class="message-card">
-          <div class="image">
-            <img src="/client/assets/profile-pic.png" />
-          </div>
-          <div class="user-message">
-            <div class="user">
-              <p>username</p>
+        <div class="left-div">
+            <div>
+                <h2>Incoming Messages</h2>
             </div>
-            <div class="message">
-              <p>Hello! I want to inquire about a Flight</p>
+            <div class="message-card-container" id="message-card-container">
+                
+            </div>
+        </div>
+
+        <div class="right-div hidden" id="right-div">
+            <div>
+                <h2>Chat with User</h2>
+            </div>
+            <div class="chat-div" id="user-chat-container">
+
+            </div>
+            
+            <div class="reply-div" id="admin-reply-container">
+
+            </div>
+            
+            <div>
+                <input type="text" class="input" id="input" placeholder="type something here"/>
+                <button class="send-btn" id="send-btn"><i class="fa fa-send-o"></i></button>
             </div>
           </div>
           <div>
@@ -150,5 +160,6 @@
     <script src="/client/scripts/common/adminSecurity.js"></script>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
+    <script src="/client/scripts/pages/adminMessages.js"></script>
   </body>
 </html>

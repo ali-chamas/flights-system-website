@@ -17,6 +17,12 @@
     width: 75px;
 }
 
+.message-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .message-card {
     display: flex;
     justify-content: space-between;
@@ -57,7 +63,12 @@
     gap: 20px;
 }
 
-.right-div >p {
+.hidden {
+    display: none;
+}
+
+
+.chat-div >p {
     font-size: small;
     align-self: flex-end;
 }
@@ -67,9 +78,12 @@
     width: 40px;
 }
 
-
+.img-chat {
+    display: flex;
+}
 .chat-div {
     display: flex;
+    flex-direction: column;
 
 }
 
@@ -93,6 +107,12 @@
 
 .reply-div {
     display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+
+.reply-div >p {
+    font-size: small;
     align-self: flex-end;
 }
 
@@ -117,6 +137,11 @@
 .input {
     padding: 15px 45px;
     border-radius: 20px;
+}
+
+.send-btn {
+    border: none;
+    cursor: pointer;
 }
 
 @media (max-width: 900px) {

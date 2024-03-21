@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/96cf59c222.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/client/styles/common/index.css" />
+    <link rel="stylesheet" href="/client/styles/common/colors.css" />
+    <link rel="stylesheet" href="/client/styles//common/utilities.css" />
+    <link rel="stylesheet" href="/client/styles//pages/admin-flights.css" />
+    <title>FlyMigo</title>
+  </head>
+  <body>
+    <header class="flex w-full justify-between align-center header-bg">
+      <h1>
+        <a href="/client/" class="special-font text-white flex center"
+          ><img src="/client/assets/logo.png" class="logo" alt="" />FlyMingo
+        </a>
+      </h1>
+      <nav class="text-white gap align-center">
+        <a href="/client/pages/airlines/airlines.html" class="text-white"
+          >airlines</a
+        >
+        <a href="/client/pages/flights/flights.html" class="text-white"
+          >flights</a
+        >
+        <a
+          href="/client/pages/auth/auth.html"
+          class="btn-style text-white special-font shadow bg-secondary"
+          id="header-login-btn"
+          >Login</a
+        >
+        <a
+          href="/pages/profile.html"
+          class="text-white profile-icon"
+          id="header-profile-btn"
+          ><i class="fa-solid fa-user"></i
+        ></a>
+      </nav>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <i class="fa-solid fa-bars text-white"></i>
+      </div>
+      <div
+        class="header-bg mobile-nav column gap align-center w-full mobile-display"
+        id="mobile-nav"
+      >
+        <a href="/client/pages/airlines/airlines.html" class="text-white"
+          >Airlines</a
+        >
+        <a href="/client/pages/flights/flights.html" class="text-white"
+          >Flgihts</a
+        >
+        <a
+          href="/client/pages/auth/auth.html"
+          class="btn-style text-white special-font shadow bg-primary"
+          id="mobile-login-btn"
+          >Login</a
+        >
+        <a
+          href="/pages/profile.html"
+          class="text-white profile-icon"
+          id="mobile-profile-btn"
+          ><i class="fa-solid fa-user"></i
+        ></a>
+      </div>
+    </header>
+
+    <section class="flex column gap flights-section w-full">
+      <div class="w-full flex justify-between">
+        <h2>Flights</h2>
+        <div>
+        <button id="btn" class="btn-style text-white special-font shadow bg-secondary" onclick="openPopup()">Add</button>
+        <select id="flights-filter">
+          <option value="all">all</option>
+          <option value="rating">rating</option>
+        </select>
+        </div>
+      </div>
+      <div
+        class="flex align-center flights-container"
+        id="flights-container"
+      ></div>
+    </section>
+    <div class="popup bg-secondary" id="add-flight-popup">
+        <h2>Add Flight<i class="fa-regular fa-x cancel-button" onclick="removePopup()"></i></h2>
+        <div id="edit-form" class="edit-field flex column center gap">
+            <div class="form-field w-full">
+                <h3>Flight Status:</h3><select id="new-passenger-seat" class="w-full p"> 
+                  <option value="ongoing">Ongoing</option>
+                  <option value="cancelled">Cancelled</option>
+                  <option value="arrived">Arrived</option>
+                </select>
+            </div>
+            <button id="btn" type="submit" class="bg-secondary text-white" onclick="modifyStatus()">Confirm</button>
+        </div>
+    </div>
+    <footer class="flex w-full align-center justify-evenly bg-primary">
+      <div class="flex column">
+        <a href="/client/pages/airlines/airlines.html">airlines</a>
+        <a href="/client/pages/flights/flights.html">flights</a>
+        <a href="/">Home</a>
+      </div>
+      <div class="flex">
+        <h1 class="text-primary">FlyMingo</h1>
+      </div>
+      <div class="flex column">
+        <a href="#">Instagram <i class="fa-brands fa-instagram"></i></a>
+        <a href="#">Facebook <i class="fa-brands fa-facebook"></i></a>
+        <a href="#">Donate</a>
+      </div>
+    </footer>
+    <script src="/client/scripts/common/apiUrl.js"></script>
+    <script src="/client/scripts/common/header.js"></script>
+    <script src="/client/scripts/pages/adminFlightsPage.js"></script>
+  </body>
+</html>
