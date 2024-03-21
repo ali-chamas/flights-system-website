@@ -123,44 +123,74 @@
           id="btn"
           type="submit"
           class="bg-secondary text-white"
-          onclick="addFlight()">Confirm</button>
-        </div>
-    </div>
-    <div class="popup bg-secondary" id="edit-flight-popup">
-        <h2>Edit Flight<i class="fa-regular fa-x cancel-button" onclick="removePopup(editFlightPopup)"></i></h2>
-        <div id="edit-form" class="edit-field flex column center gap">
-            <div class="form-field w-full flex column">
-                <h3>AirlineID:</h3><select id="airlineEdit"> 
-                </select>
-                <h3>Departure:</h3><input id="departureEdit" type="text" placeholder="" required>
-                <h3>Arrival:</h3><input id="arrivalEdit" type="text" placeholder="" required>
-                <h3>DepartureTime:</h3><input id="departure-timeEdit" type="text" placeholder="" required>
-                <h3>ArrivalTime:</h3><input id="arrival-timeEdit" type="text" placeholder="" required>
-                <h3>Image:</h3><input id="imageEdit" type="text" placeholder="" required> 
-            </div>
-            <button type="submit" class="bg-secondary text-white" onclick="editFlight()"
-        >
-          Edit
-        </button>
-        <button type="submit" class="bg-secondary text-white" onclick="addTicket()"
-        >
-          Add Ticket
-        </button>
-    </div>
-    </div>
-    <div class="popup bg-secondary" id="add-ticket-popup">
-        <h2>Add Ticket<i class="fa-regular fa-x cancel-button" onclick="removePopup(addTicketPopup)"></i></h2>
-        <div class="edit-field flex column center gap">
-            <div class="form-field w-full flex column">
-                <h3>Total Seats:</h3><input id="total-seats" type="text" placeholder="" required>
-                <h3>Date:</h3><input id="ticket-date" type="text" placeholder="" required>
-                <h3>Price:</h3><input id="ticket-price" type="text" placeholder="" required> 
-            </div>
-        <button type="submit" class="bg-secondary text-white" onclick="submitTicket()"
+          onclick="addFlight()"
         >
           Confirm
         </button>
+      </div>
     </div>
+    <div class="popup bg-secondary" id="edit-flight-popup">
+      <h2>
+        Edit Flight<i
+          class="fa-regular fa-x cancel-button"
+          onclick="removePopup(editFlightPopup)"
+        ></i>
+      </h2>
+      <div id="edit-form" class="edit-field flex column center gap">
+        <div class="form-field w-full flex column">
+          <h3>AirlineID:</h3>
+          <select id="airlineEdit"></select>
+          <h3>Departure:</h3>
+          <input id="departureEdit" type="text" placeholder="" required />
+          <h3>Arrival:</h3>
+          <input id="arrivalEdit" type="text" placeholder="" required />
+          <h3>DepartureTime:</h3>
+          <input id="departure-timeEdit" type="text" placeholder="" required />
+          <h3>ArrivalTime:</h3>
+          <input id="arrival-timeEdit" type="text" placeholder="" required />
+          <h3>Image:</h3>
+          <input id="imageEdit" type="text" placeholder="" required />
+        </div>
+        <button
+          type="submit"
+          class="bg-secondary text-white"
+          onclick="editFlight()"
+        >
+          Edit
+        </button>
+        <button
+          type="submit"
+          class="bg-secondary text-white"
+          onclick="addTicket()"
+        >
+          Add Ticket
+        </button>
+      </div>
+    </div>
+    <div class="popup bg-secondary" id="add-ticket-popup">
+      <h2>
+        Add Ticket<i
+          class="fa-regular fa-x cancel-button"
+          onclick="removePopup(addTicketPopup)"
+        ></i>
+      </h2>
+      <div class="edit-field flex column center gap">
+        <div class="form-field w-full flex column">
+          <h3>Total Seats:</h3>
+          <input id="total-seats" type="text" placeholder="" required />
+          <h3>Date:</h3>
+          <input id="ticket-date" type="text" placeholder="" required />
+          <h3>Price:</h3>
+          <input id="ticket-price" type="text" placeholder="" required />
+        </div>
+        <button
+          type="submit"
+          class="bg-secondary text-white"
+          onclick="submitTicket()"
+        >
+          Confirm
+        </button>
+      </div>
     </div>
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
@@ -177,6 +207,7 @@
         <a href="#">Donate</a>
       </div>
     </footer>
+    <script src="/client/scripts/common/unsecured.js"></script>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
     <script src="/client/scripts/pages/adminFlightsPage.js"></script>

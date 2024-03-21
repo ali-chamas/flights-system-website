@@ -1,6 +1,7 @@
 totalUsers = document.getElementById("number-of-users");
 totalBookings = document.getElementById("total-bookings");
 revenue = document.getElementById("revenue");
+const logoutBtn = document.getElementById("logout-btn");
 
 const getUsers = () => {
   fetch(
@@ -68,6 +69,12 @@ const updateRevenueCard = (numRevenue) => {
   revenue.innerHTML = `${numRevenue}`;
 };
 
+const logout = () => {
+  window.localStorage.removeItem("session");
+  window.location.assign("/client");
+};
+
+logoutBtn.addEventListener("click", logout);
 getRevenueAmount();
 getBookings();
 getUsers();

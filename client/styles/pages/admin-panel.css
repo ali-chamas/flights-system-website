@@ -1,57 +1,59 @@
 .overview-section {
-    padding: 60px 40px;
+  padding: 60px 40px;
 }
 
-.line{
-    border-bottom: 2px solid #d1d1d1;
-    padding-bottom: 1.5rem;
+.line {
+  border-bottom: 2px solid #d1d1d1;
+  padding-bottom: 1.5rem;
 }
 
-.card-wrapper{
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding-top: 3rem;
+.card-wrapper {
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 3rem;
 }
 
-.income-card{
-    border-radius: 10px;
-    padding: 1.2rem;
-    width: 290px;
-    height: 150px;
-    transition: all ease-in-out;
-    transition-duration: 0.5s;
+.income-card {
+  border-radius: 10px;
+  padding: 1.2rem;
+  width: 290px;
+  height: 150px;
+  transition: all ease-in-out;
+  transition-duration: 0.5s;
 }
 
-.income-card:hover{
-    transform: translateY(-5px);
+.income-card:hover {
+  transform: translateY(-5px);
 }
 
-.amount{
-    display: flex;
-    flex-direction: column;
+.amount {
+  display: flex;
+  flex-direction: column;
 }
 
-.amount-value{
-    font-size: 24px;
-    padding-top: 2rem;
-    font-weight: 600;
+.amount-value {
+  font-size: 24px;
+  padding-top: 2rem;
+  font-weight: 600;
 }
 
-.statistics{
-    padding-top: 3rem;
+.statistics {
+  padding-top: 3rem;
 }
 
-#myChart{
-    padding-top: 4rem;
-    width:100%;
-    max-width:600px;
-    align-self: center;
+#myChart {
+  padding-top: 4rem;
+  width: 100%;
+  max-width: 600px;
+  align-self: center;
 }
 
+section > button {
+  align-self: flex-end;
+}
 
-  @media (max-width: 500px) {
-    h2 {
-      font-size: 20px;
-    }
+@media (max-width: 500px) {
+  h2 {
+    font-size: 20px;
   }
-  
+}

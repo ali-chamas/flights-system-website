@@ -35,7 +35,7 @@
       )
       where a.id=?
       ");
-      $updateAverage->bind_param("i",$userID);
+      $updateAverage->bind_param("i",$airlineID);
       if($updateAverage->execute())
       $response["status"]= "success";
 
