@@ -84,27 +84,19 @@
         <div class="message-card-container" id="message-card-container"></div>
       </div>
 
-      <div class="right-div hidden" id="right-div">
-        <div class="flex column gap messages-container">
-          <div>
-            <h2>Chat with User</h2>
-          </div>
-          <div class="chat-div" id="user-chat-container"></div>
-
-          <div class="reply-div" id="admin-reply-container"></div>
-
-          <div></div>
-        </div>
+      <div class="chat-popup flex column gap p header-bg hidden" id="chat-box">
+        <p id="close-chat" class="close-chat">X</p>
+        <div
+          class="messages-container flex column gap p"
+          id="messages-container"
+        ></div>
         <div>
           <input
             type="text"
-            class="input"
-            id="input"
-            placeholder="type something here"
+            placeholder="your message here..."
+            id="message-input"
           />
-          <button class="send-btn" id="send-btn">
-            <i class="fa fa-send-o"></i>
-          </button>
+          <button type="button" id="send-btn">send</button>
         </div>
       </div>
     </section>

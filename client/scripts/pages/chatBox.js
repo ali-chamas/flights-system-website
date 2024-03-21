@@ -46,8 +46,9 @@ const sendMessage = async (message) => {
 
 const generateMessages = () => {
   const currentUser = JSON.parse(window.localStorage.getItem("session"));
+  messages.sort((a, b) => a.id - b.id);
   messagesContainer.innerHTML = "";
-
+  console.log(messages);
   messages.forEach((m) => {
     if (m.receiver == currentUser.id) {
       messagesContainer.innerHTML += ` <div class="flex column gap message-style receiver">
@@ -55,7 +56,7 @@ const generateMessages = () => {
         <small>${m.message}</small>
         <small class="text-gray">${m.sentAt}</small>
       </div>`;
-    } else {
+    } else if (m.sender == currentUser.id) {
       messagesContainer.innerHTML += ` <div class="flex column gap message-style sender">
         <b>${currentUser.name}</b>
         <small>${m.message}</small>

@@ -8,7 +8,7 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 if(!empty($_GET['id'])){
 
     $id=$_GET['id'];
-    $query = $mysqli->prepare('select message,sentAT,userID,receiver,name,image 
+    $query = $mysqli->prepare('select messages.*,name,image 
     from messages
     join users on messages.userID = users.id
     Where userID=? or receiver = ?');
@@ -21,9 +21,10 @@ if(!empty($_GET['id'])){
         $response["status"] = "no messages found";
     } else {
         $messages = [];
-        $query->bind_result($message,$sentAt,$userID,$receiver,$name,$image);
+        $query->bind_result($messageID,$message,$sentAt,$userID,$receiver,$name,$image);
         while($query->fetch()) {
             $message=[
+                'id'=>$messageID,
                 'message'=>$message,
                 'sentAt'=>$sentAt,
                 'sender'=>$userID,
