@@ -23,7 +23,7 @@ switch ($request_method) {
         }
         break;
 
-    case 'PUT':
+    case 'POST':
         if (!empty($_GET["id"]) && !empty($_GET["newSeatNumber"])) {
             $id = intval($_GET["id"]);
             $newSeatNumber = $_GET["newSeatNumber"];

@@ -1,171 +1,181 @@
 .section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 40px 45px;
-  }
-  .divs-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .image-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .image-container img {
-    border-radius: 50%;
-    width: 150px;
-  }
-  
-  .account-details-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f0f7fd;
-    border-radius: 20px;
-  }
-  
-  .details-container {
-    display: flex;
-    flex-direction: column;
-    background-color: #f0f7fd;
-    border-radius: 20px;
-    padding: 10px;
-  }
-  
-  .username {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px #d1d1d1 solid;
-    padding: 10px;
-  }
-  
-  .email {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px #d1d1d1 solid;
-    padding: 10px;
-    gap: 10px;
-  }
-  
-  .left-div {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .right-div {
-    display: flex;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .coins {
-    display: flex;
-    background-color: #f0f7fd;
-    padding: 15px 30px;
-    border-radius: 10px;
-    gap: 10px;
-    align-self: end;
-  }
-  
-  .container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    background-color: #f0f7fd;
-    border-radius: 20px;
-    padding: 10px;
-  }
-  
-  .child {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-bottom: 1px #d1d1d1 solid;
-    padding: 10px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 45px;
+}
+.divs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .btn {
-    border: none;
-    cursor: pointer;
-    color: #007dd6;
-  }
+.image-container {
+  display: flex;
+  justify-content: center;
+}
 
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.image-container img {
+  border-radius: 50%;
+  width: 170px;
+  height: 170px;
+}
 
-  .hidden {
-    display: none;
-  }
+.account-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f7fd;
+  border-radius: 20px;
+}
 
-  .popup {
-    position: fixed;
-    background-color: #00000071;
-    height: 100vh;
-    width: 100vw;
-  }
+.details-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f7fd;
+  border-radius: 20px;
+  padding: 10px;
+}
 
-  .popup > div {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 30%;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+.username {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #d1d1d1 solid;
+  padding: 10px;
+}
 
-  .input {
-    min-width: 100px;
-    flex-grow: 1;
-    max-width: 50% - 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .input > input {
-    border: 1px solid #dcdcdc;
-    border-radius: 5px;
-    padding: 0 10px;
-    height: 40px;
-  }
+.email {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #d1d1d1 solid;
+  padding: 10px;
+  gap: 10px;
+}
 
-  .popup-btn{
-    border: none;
-    background-color: #007dd6;
-    color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 20px;
-  }
+.reviews-container {
+  max-width: 300px;
+  width: 300px;
+}
 
-  .flex-column-gap {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+.left-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-div {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.coins {
+  display: flex;
+  background-color: #f0f7fd;
+  padding: 15px 30px;
+  border-radius: 10px;
+  gap: 10px;
+  align-self: end;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: #f0f7fd;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.child {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px #d1d1d1 solid;
+  padding: 10px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  color: #007dd6;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  background-color: #00000071;
+  height: 100vh;
+  width: 100vw;
+}
+
+.popup > div {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input {
+  min-width: 100px;
+  flex-grow: 1;
+  max-width: 50% - 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input > input {
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 0 10px;
+  height: 40px;
+}
+
+.popup-btn {
+  border: none;
+  background-color: #007dd6;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.flex-column-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .flex-justify-between {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-  
-  @media (max-width: 728px) {
-    .divs-container {
-      flex-direction: column;
-      gap: 40px;
-    }
-    .right-div {
-      width: 100%;
-    }
+
+.popup-content {
+  max-height: 300px;
+  overflow-x: auto;
+}
+@media (max-width: 728px) {
+  .divs-container {
+    flex-direction: column;
+    gap: 40px;
   }
+  .right-div {
+    width: 100%;
+  }
+}
