@@ -4,7 +4,7 @@ const sendButton = document.getElementById("send-btn");
 let messageCardContainer = document.getElementById("message-card-container");
 let userChatContainer = document.getElementById("user-chat-container");
 let adminReplyContainer = document.getElementById("admin-reply-container");
-
+let chatMessages = [];
 let messages = [];
 
 const getMessages = async () => {
@@ -20,6 +20,22 @@ const getMessages = async () => {
     alert("Error occured while sending request");
   }
 };
+
+const getMessagesById = async (id) => {
+    try {
+        const response = await fetch(
+            `http://localhost/flights-system-website/server/messages/receive.php?id=${id}`,
+            {method: "GET"}
+        );
+        const data = await response.json();
+        console.log(data.messages);
+        return data.messages;
+
+    } catch (error) {
+        console.error(error);
+        alert("Error occured while sending request");
+    }
+}
 
 const generateMessages = () => {
   messageCardContainer.innerHTML = "";
@@ -38,21 +54,24 @@ const generateMessages = () => {
             </div>
         </div>
         <div>
-        <button onclick="displayChat()" class="button">Chat back</button>
+        <button onclick="displayChat(${message.sender})" class="button">Chat back</button>
         </div>
         </div>`;
     }
   });
 };
 
-const displayChat = () => {
+const displayChat = async (id) => {
   rightDiv.classList.remove("hidden");
+   await generateChat(id);
 };
 
-const generateChat = () => {
-  userChatContainer.innerHTML = "";
-  adminReplyContainer.innerHTML = "";
-  messages.forEach((message) => {
+const generateChat = async (id) => {
+    chatMessages = await getMessagesById(id);
+
+    userChatContainer.innerHTML = "";
+    adminReplyContainer.innerHTML = "";
+    chatMessages.forEach((message) => {
     if (message.receiver == null) {
       userChatContainer.innerHTML += `<div class="img-chat">
             <div class="img">
@@ -85,16 +104,21 @@ const generateChat = () => {
         <p>${message.sentAt}</p>`;
     }
   });
-  document.getElementById("input").value ="";
 };
 
 const sendMessage = async () => {
   const currentUser = JSON.parse(window.localStorage.getItem("session"));
+  let receiverId
+  if (chatMessages[0].sender == currentUser) {
+    receiverId =chatMessages[0].receiver;
+  } else {
+    receiverId =chatMessages[0].sender;
+  }
   try {
     const formData = new FormData();
     formData.append("message", input.value);
     formData.append("userID", currentUser.id);
-    formData.append("receiver", 9);
+    formData.append("receiver", receiverId);
     const response = await fetch(
       "http://localhost/flights-system-website/server/messages/send-to-user.php",
       {
@@ -104,6 +128,8 @@ const sendMessage = async () => {
     );
     const data = await response.json();
     console.log(data);
+    document.getElementById("input").value ="";
+    await generateChat(receiverId);
   } catch (error) {
     console.error(error);
     // alert("Error occured while sending request");
@@ -113,13 +139,12 @@ const sendMessage = async () => {
 sendButton.addEventListener("click", async () => {
   await sendMessage();
   await getMessages();
-  generateChat();
+  //generateChat();
 });
 
 const app = async () => {
   await getMessages();
   generateMessages();
-  generateChat();
 };
 
 app();
