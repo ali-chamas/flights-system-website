@@ -42,9 +42,23 @@
             ]);
         }
         break;
-
-   
     
+    case "PUT":
+        parse_str(file_get_contents("php://input"), $_PUT);
+    
+        $id = $_PUT['id'];
+        $departure = $_PUT['departure'];
+        $arrival = $_PUT['arrival'];
+        $departureTime = $_PUT['departureTime'];
+        $arrivalTime = $_PUT['arrivalTime'];
+        $image = $_PUT['image'];
+        $airlineID = $_PUT['airlineID'];
+    
+        $response = editFlight($id, $departure, $arrival, $departureTime, $arrivalTime, $image, $airlineID);
+        
+        echo json_encode($response);
+        break;
+
     default:
         echo json_encode([
             "status"=>"something went wrong",
@@ -145,4 +159,14 @@
     return $response;
  }
 
- 
+ function editFlight($id, $departure, $arrival, $departureTime, $arrivalTime, $image, $airlineID) {
+    global $mysqli;
+    $query = $mysqli->prepare("UPDATE flights SET departure=?, destination=?, departureTime=?, arrivalTime=?, image=?, airlineID=? WHERE id=?");
+    $query->bind_param("sssssii", $departure, $arrival, $departureTime, $arrivalTime, $image, $airlineID, $id);
+    if ($query->execute()) {
+        $response["status"] = "success";
+    } else {
+        $response["status"] = "failed";
+    }
+    return $response;
+}
