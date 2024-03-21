@@ -1,10 +1,6 @@
 const editButton = document.getElementById("edit-btn");
 const addEditPopup = document.getElementById("add-edit-popup");
-// const updateButton = document.getElementById("update-btn");
-// const cancelButton = document.getElementById("cancel-btn");
-// const imageInput = document.getElementById("image-input");
-// const usernameInput = document.getElementById("username-input");
-// const emailInput = document.getElementById("email-input");
+
 const cancelButton = document.getElementById("cancel-btn");
 const requestButton = document.getElementById("request-btn");
 const addRequestPopup = document.getElementById("add-request-popup");
@@ -74,10 +70,12 @@ let flightsReviews = [];
 let airlinesReviews = [];
 
 const fetchUser = async () => {
-  const currentUser = window.localStorage.getItem("user");
+  const currentUser = JSON.parse(window.localStorage.getItem("session"));
 
   try {
-    const res = await fetch(`${apiURL}/users/usersApi.php?id=${2}`);
+    const res = await fetch(
+      `${apiURL}/users/usersApi.php?id=${currentUser.id}`
+    );
     const data = await res.json();
     if (data.status == "Success") {
       user = data.user;
@@ -99,7 +97,9 @@ const fetchBookings = async () => {
 
 const fetchFlightsReviews = async () => {
   try {
-    const res = await fetch(`${apiURL}/users/getFlightsReviews.php?id=2`);
+    const res = await fetch(
+      `${apiURL}/users/getFlightsReviews.php?id=${user.id}`
+    );
     const data = await res.json();
     if (data.status == "success") {
       flightsReviews = data.reviews;
@@ -110,7 +110,9 @@ const fetchFlightsReviews = async () => {
 };
 const fetchAirlinesReviews = async () => {
   try {
-    const res = await fetch(`${apiURL}/users/getAirlinesReviews.php?id=2`);
+    const res = await fetch(
+      `${apiURL}/users/getAirlinesReviews.php?id=${user.id}`
+    );
     const data = await res.json();
     if (data.status == "success") {
       airlinesReviews = data.reviews;
@@ -223,7 +225,7 @@ const changeProfile = async () => {
   user.append("password", newUser.password);
   user.append("image", newUser.image);
   try {
-    const res = await fetch(`${apiURL}/users/editUser.php?id=2`, {
+    const res = await fetch(`${apiURL}/users/editUser.php?id=${user.id}`, {
       method: "POST",
       body: user,
     });

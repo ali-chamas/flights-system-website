@@ -138,7 +138,7 @@ const bookTicket = async (id) => {
   try {
     const res = await fetch(`${apiURL}/bookings/bookTickets.php`, {
       method: "POST",
-      body: JSON.stringify({ seatID: id, userID: 2 }),
+      body: JSON.stringify({ seatID: id, userID: currentUser.id }),
     });
     const data = await res.json();
     console.log(data);

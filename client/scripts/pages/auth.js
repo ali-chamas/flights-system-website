@@ -14,8 +14,9 @@ const signupBtn = document.getElementById("signup-btn");
 const loginError = document.getElementById("login-error");
 const signupError = document.getElementById("signup-error");
 
-if (!session || session == "loggedOut") {
-} else {
+console.log(session);
+
+if (session) {
   window.location.assign("/client");
 }
 
@@ -96,9 +97,9 @@ const login = async () => {
       });
       const data = await res.json();
       if (data.status == "logged in") {
-        // window.localStorage.setItem("session", JSON.stringify(data.user));
+        window.localStorage.setItem("session", JSON.stringify(data.user));
         if (data.user.isAdmin) {
-          window.location.assign("/client/pages/admin/adminPanel");
+          window.location.assign("/client/pages/admin/adminPanel.html");
         } else {
           window.location.assign("/client");
         }
@@ -127,9 +128,9 @@ const signup = async () => {
       });
       const data = await res.json();
       if (data.status == "success") {
-        // window.localStorage.setItem("session", JSON.stringify(data.user));
+        window.localStorage.setItem("session", JSON.stringify(data.user));
         if (data.user.isAdmin) {
-          window.location.assign("/client/pages/admin/adminPanel");
+          window.location.assign("/client/pages/admin/adminPanel.html");
         } else {
           window.location.assign("/client");
         }
