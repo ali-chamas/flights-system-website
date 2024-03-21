@@ -1,10 +1,11 @@
 const editButton = document.getElementById("edit-btn");
 const addEditPopup = document.getElementById("add-edit-popup");
-const updateButton = document.getElementById("update-btn");
+// const updateButton = document.getElementById("update-btn");
+// const cancelButton = document.getElementById("cancel-btn");
+// const imageInput = document.getElementById("image-input");
+// const usernameInput = document.getElementById("username-input");
+// const emailInput = document.getElementById("email-input");
 const cancelButton = document.getElementById("cancel-btn");
-const imageInput = document.getElementById("image-input");
-const usernameInput = document.getElementById("username-input");
-const emailInput = document.getElementById("email-input");
 const requestButton = document.getElementById("request-btn");
 const addRequestPopup = document.getElementById("add-request-popup");
 const amountCancelButton = document.getElementById("amount-cancel-btn");
@@ -57,6 +58,15 @@ const userEmail = document.getElementById("user-email");
 const bookingsContainer = document.getElementById("bookings-container");
 
 const reviewsContainer = document.getElementById("reviews-container");
+
+const amountInput = document.getElementById("amount-input");
+const amountBtn = document.getElementById("amount-btn");
+
+const updateButton = document.getElementById("update-btn");
+
+const imageInput = document.getElementById("image-input");
+const usernameInput = document.getElementById("username-input");
+const emailInput = document.getElementById("email-input");
 
 let user = {};
 let bookings = [];
@@ -127,7 +137,7 @@ const generateBookings = () => {
         <small>${b.seatNumber}</small>
         <div>
           <small>${b.status}</small>
-          <small class="text-danger">Delete</small>
+          <small class="text-danger" onclick="deleteSingleBooking(${b.id})">Delete</small>
 
         </div>
       </div>`;
@@ -175,6 +185,54 @@ const generateReviews = () => {
   });
 };
 
+const deleteSingleBooking = async (id) => {
+  try {
+    const res = await fetch(`${apiURL}/bookings/updateBooking.php?id=${id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    console.log(data);
+    await fetchBookings();
+    generateBookings();
+  } catch (error) {}
+};
+
+const sendRequest = async () => {
+  try {
+    const res = await fetch(`${apiURL}/coins/requestCoins.php?userID=2`, {
+      method: "POST",
+      body: JSON.stringify({ amount: amountInput.value }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status == "success") {
+      addRequestPopup.classList.add("hidden");
+      alert("Request sent");
+    }
+  } catch (error) {}
+};
+
+const newUser = {
+  name: "",
+  password: "",
+  image: "",
+};
+const changeProfile = async () => {
+  const user = new FormData();
+  user.append("name", newUser.name);
+  user.append("password", newUser.password);
+  user.append("image", newUser.image);
+  try {
+    const res = await fetch(`${apiURL}/users/editUser.php?id=2`, {
+      method: "POST",
+      body: user,
+    });
+    const data = await res.json();
+    await fetchUser();
+    generateUserInfo();
+  } catch (error) {}
+};
+
 const app = async () => {
   await fetchUser();
   await fetchBookings();
@@ -183,6 +241,22 @@ const app = async () => {
   generateUserInfo();
   generateBookings();
   generateReviews();
+  amountBtn.addEventListener("click", async () => await sendRequest());
+
+  emailInput.addEventListener(
+    "change",
+    (e) => (newUser.password = e.target.value)
+  );
+  usernameInput.addEventListener(
+    "change",
+    (e) => (newUser.name = e.target.value)
+  );
+  imageInput.addEventListener(
+    "change",
+    (e) => (newUser.image = e.target.value)
+  );
+
+  updateButton.addEventListener("click", changeProfile);
 };
 
 app();

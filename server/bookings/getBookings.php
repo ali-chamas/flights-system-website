@@ -4,7 +4,7 @@ include("../db/connection.php");
 $id=$_GET['id'];
 
 $query=$mysqli->prepare('
-SELECT tickets.price,tickets.date,tickets.status,flights.departure,flights.destination,seats.seatNumber,users.email
+SELECT bookings.id,tickets.price,tickets.date,tickets.status,flights.departure,flights.destination,seats.seatNumber,users.email
 FROM Bookings
 JOIN seats  on seats.id = bookings.seatID
 JOIN tickets on tickets.id = seats.ticketID
@@ -19,11 +19,12 @@ $num_rows=$query->num_rows;
 
 if($num_rows> 0){
 $bookings = [];
-$query->bind_result($price,$date,$status,$departure,$destination,$seatNumber,$email);
+$query->bind_result($bookingID,$price,$date,$status,$departure,$destination,$seatNumber,$email);
 
 while($query->fetch()){
     
     $booking=[
+        'id'=>$bookingID,
         'price'=>$price,
         'date'=>$date,
         'status'=>$status,

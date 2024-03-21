@@ -5,8 +5,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if (isset($data['userID']) && isset($data['amount'])) {
-        $userID = $data['userID'];
+    if (isset($_GET['userID']) && isset($data['amount'])) {
+        $userID = $_GET['userID'];
         $amount = $data['amount'];
 
         $check_user_query = $mysqli->prepare("SELECT id FROM users WHERE id = ?");

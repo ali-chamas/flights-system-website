@@ -134,6 +134,7 @@ const generateSeats = () => {
 
 const bookTicket = async (id) => {
   const currentUser = JSON.parse(window.localStorage.getItem("user"));
+
   try {
     const res = await fetch(`${apiURL}/bookings/bookTickets.php`, {
       method: "POST",
