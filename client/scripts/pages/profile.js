@@ -64,6 +64,8 @@ const imageInput = document.getElementById("image-input");
 const usernameInput = document.getElementById("username-input");
 const emailInput = document.getElementById("email-input");
 
+const logoutBtn = document.getElementById("logout-btn");
+
 let user = {};
 let bookings = [];
 let flightsReviews = [];
@@ -133,15 +135,15 @@ const generateBookings = () => {
   bookingsContainer.innerHTML = "";
   bookings.forEach((b) => {
     bookingsContainer.innerHTML += ` <div class="flex gap p bg-primary">
-        <b>${b.departure} - ${b.destination}</b>
+    <b>${b.departure} - ${b.destination}</b>
         <small class="text-gray">${b.date}</small>
         <small>${b.price} coins</small>
         <small>${b.seatNumber}</small>
         <div>
           <small>${b.status}</small>
-          <small class="text-danger" onclick="deleteSingleBooking(${b.id})">Delete</small>
+          <small class="text-danger" onclick="deleteSingleBooking(${b.id})">Cancel</small>
 
-        </div>
+          </div>
       </div>`;
   });
 };
@@ -153,7 +155,7 @@ const generateReviews = () => {
     reviewsContainer.innerHTML += `<div class="bg-primary p flex column">
         <div class="flex justify-between w-full">
           <small>
-            <i class="fa-solid fa-star rate-color" ></i>
+          <i class="fa-solid fa-star rate-color" ></i>
             ${r.rating}
           </small>
           <small>
@@ -163,39 +165,41 @@ const generateReviews = () => {
         </div>
         <small class="text-gray">
           ${r.review}
-        </small>
-    
-      </div>`;
+          </small>
+          
+          </div>`;
   });
   airlinesReviews.forEach((r) => {
     reviewsContainer.innerHTML += `<div class="bg-primary p flex column">
         <div class="flex justify-between w-full">
-          <small>
-            <i class="fa-solid fa-star rate-color" ></i>
+        <small>
+        <i class="fa-solid fa-star rate-color" ></i>
             ${r.rating}
           </small>
           <small>
           ${r.airlineName}
           <small/>
           
-        </div>
-        <small class="text-gray">
+          </div>
+          <small class="text-gray">
           ${r.review}
-        </small>
-    
-      </div>`;
+          </small>
+          
+          </div>`;
   });
 };
 
 const deleteSingleBooking = async (id) => {
   try {
-    const res = await fetch(`${apiURL}/bookings/updateBooking.php?id=${id}`, {
+    const res = await fetch(`${apiURL}/bookings/cancelBooking.php?id=${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
     console.log(data);
     await fetchBookings();
     generateBookings();
+    await fetchUser();
+    generateUserInfo();
   } catch (error) {}
 };
 
@@ -235,6 +239,11 @@ const changeProfile = async () => {
   } catch (error) {}
 };
 
+const logout = () => {
+  window.localStorage.removeItem("session");
+  window.location.assign("/client");
+};
+
 const app = async () => {
   await fetchUser();
   await fetchBookings();
@@ -259,6 +268,7 @@ const app = async () => {
   );
 
   updateButton.addEventListener("click", changeProfile);
+  logoutBtn.addEventListener("click", logout);
 };
 
 app();
