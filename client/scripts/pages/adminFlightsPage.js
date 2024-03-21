@@ -1,5 +1,6 @@
 const flightsContainer = document.getElementById("flights-container");
 const filterBtn = document.getElementById("flights-filter");
+const addFlightPopup = document.getElementById("add-flight-popup")
 
 let flights = [];
 let filterValue = "any";
@@ -19,7 +20,7 @@ const generateFlights = (array) => {
   flightsContainer.innerHTML = "";
   array.forEach((a) => {
     flightsContainer.innerHTML += `<a
-                                        href="/client/pages/flights/singleFlightPage.html?id=${a.id}"
+                                        id="{a.id}"
                                         class="flex column gap flight-card"
                                         >
                                         <img src="${a.image}" alt="" />
@@ -63,3 +64,11 @@ const app = async () => {
 
 app();
 
+function openPopup(){
+  addFlightPopup.classList.add("open-popup");
+}
+
+
+function removePopup(){
+  addFlightPopup.classList.remove("open-popup");
+}
