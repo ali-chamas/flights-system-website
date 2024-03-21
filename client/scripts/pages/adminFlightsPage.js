@@ -14,6 +14,7 @@ const arrivalInputEdit = document.getElementById("arrivalEdit");
 const departureTimeInputEdit = document.getElementById("departure-timeEdit");
 const arrivalTimeInputEdit = document.getElementById("arrival-timeEdit")
 const imageInputEdit = document.getElementById("imageEdit")
+const addTicketPopup = document.getElementById("add-ticket-popup")
 
 let flights = [];
 let filterValue = "any";
@@ -203,3 +204,8 @@ const editFlightRequest = async (formData) => {
       console.error(error);
   }
 };
+
+const addTicket = async () => {
+  removePopup(editFlightPopup);
+  openPopup(addTicketPopUp);
+}
