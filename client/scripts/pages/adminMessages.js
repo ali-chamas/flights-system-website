@@ -85,6 +85,7 @@ const generateChat = () => {
         <p>${message.sentAt}</p>`;
     }
   });
+  document.getElementById("input").value ="";
 };
 
 const sendMessage = async () => {
