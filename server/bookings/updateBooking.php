@@ -6,7 +6,7 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 
 switch ($request_method) {
     case 'GET':
-        if (isset($_GET["id"])) {
+        if (!empty($_GET["id"])) {
             $id = intval($_GET["id"]);
             $response = getBookingDetails($id);
         } else {
@@ -26,7 +26,7 @@ switch ($request_method) {
     case 'POST':
         if (!empty($_GET["id"]) && !empty($_GET["newSeatNumber"])) {
             $id = intval($_GET["id"]);
-            $newSeatNumber = intval($_GET["newSeatNumber"]);
+            $newSeatNumber = $_GET["newSeatNumber"];
             $response = updateBookingSeat($id, $newSeatNumber);
         } else {
             $response = ["status" => "Booking ID and new seat number are required"];
@@ -42,7 +42,7 @@ echo json_encode($response);
 
 function getAllBookings() {
     global $mysqli;
-    $query = $mysqli->query("SELECT bookings.id, bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price
+    $query = $mysqli->query("SELECT bookings.id, bookings.seatID, users.name AS passenger_name, flights.departure, flights.destination, seats.seatNumber, tickets.price, tickets.status
                             FROM bookings
                             LEFT JOIN users ON bookings.userID = users.id
                             LEFT JOIN seats ON bookings.seatID = seats.id
@@ -89,10 +89,10 @@ function deleteBooking($id) {
 
 function updateBookingSeat($id, $newSeatNumber) {
     global $mysqli;
-    $query = $mysqli->prepare("UPDATE seats SET seatNumber = ? WHERE id = ?");
-    $query->bind_param("ii", $newSeatNumber, $id);
+    $query = $mysqli->prepare("UPDATE tickets SET status = ? WHERE id = ?");
+    $query->bind_param("si", $newSeatNumber, $id);
     if ($query->execute()) {
-        return ["status" => "Booking seat updated successfully"];
+        return ["status" => "Flight status updated successfully"];
     } else {
         return ["status" => "Failed to update booking seat"];
     }
