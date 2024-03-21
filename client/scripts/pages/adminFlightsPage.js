@@ -15,6 +15,10 @@ const departureTimeInputEdit = document.getElementById("departure-timeEdit");
 const arrivalTimeInputEdit = document.getElementById("arrival-timeEdit")
 const imageInputEdit = document.getElementById("imageEdit")
 const addTicketPopup = document.getElementById("add-ticket-popup")
+const totalSeats = document.getElementById("total-seats")
+const ticketDate = document.getElementById("ticket-date")
+const ticketPrice = document.getElementById("ticket-price")
+
 
 let flights = [];
 let filterValue = "any";
@@ -205,7 +209,39 @@ const editFlightRequest = async (formData) => {
   }
 };
 
-const addTicket = async () => {
+const addTicket = () => {
   removePopup(editFlightPopup);
-  openPopup(addTicketPopUp);
+  openPopup(addTicketPopup);
 }
+
+const submitTicket = async () =>{
+  if (inputIsEmpty(addTicketPopup)){
+    alert("Please fill all details");
+  }
+  else{
+    let formData = new FormData();
+    formData.append('totalSeats', totalSeats.value);
+    formData.append('date', ticketDate.value);
+    formData.append('price', ticketPrice.value);
+    formData.append('flightID', flightToEditId);
+
+
+    await addTicketRequest(formData);
+    await getFlights();
+    generateFlights(flights);
+    removePopup(addTicketPopup);
+  }
+}
+
+const addTicketRequest = async (formData) => {
+  try {
+      const response = await fetch(`http://localhost/flights-system-website/server/tickets/add.php`, {
+          method: "POST",
+          body: formData
+      });
+      const data = await response.json();
+      console.log(data);
+  } catch (error) {
+      console.error(error);
+  }
+};

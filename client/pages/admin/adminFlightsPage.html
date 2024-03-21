@@ -79,13 +79,6 @@
       <div class="w-full flex justify-between">
         <h2>Flights</h2>
         <div>
-            <button
-            id="add-ticket"
-            class="btn-style text-white special-font shadow bg-secondary"
-            onclick="openPopup(ticketPopup)"
-          >
-            Add Ticket
-          </button>
           <button
             id="btn"
             class="btn-style text-white special-font shadow bg-secondary"
@@ -159,9 +152,9 @@
         <h2>Add Ticket<i class="fa-regular fa-x cancel-button" onclick="removePopup(addTicketPopup)"></i></h2>
         <div class="edit-field flex column center gap">
             <div class="form-field w-full flex column">
-                <h3>DepartureTime:</h3><input id="departure-timeEdit" type="text" placeholder="" required>
-                <h3>ArrivalTime:</h3><input id="arrival-timeEdit" type="text" placeholder="" required>
-                <h3>Image:</h3><input id="imageEdit" type="text" placeholder="" required> 
+                <h3>Total Seats:</h3><input id="total-seats" type="text" placeholder="" required>
+                <h3>Date:</h3><input id="ticket-date" type="text" placeholder="" required>
+                <h3>Price:</h3><input id="ticket-price" type="text" placeholder="" required> 
             </div>
         <button type="submit" class="bg-secondary text-white" onclick="submitTicket()"
         >
