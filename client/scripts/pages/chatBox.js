@@ -15,7 +15,7 @@ const fetchMessages = async () => {
       `${apiURL}/messages/receive.php?id=${currentUser.id}`
     );
     const data = await res.json();
-    messages = data.messages;
+    if (data.status == "success") messages = data.messages;
   } catch (error) {
     console.log(error);
   }
@@ -47,6 +47,7 @@ const sendMessage = async (message) => {
 const generateMessages = () => {
   const currentUser = JSON.parse(window.localStorage.getItem("session"));
   messagesContainer.innerHTML = "";
+
   messages.forEach((m) => {
     if (m.receiver == currentUser.id) {
       messagesContainer.innerHTML += ` <div class="flex column gap message-style receiver">
