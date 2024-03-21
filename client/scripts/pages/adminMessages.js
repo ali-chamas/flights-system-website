@@ -114,6 +114,7 @@ const sendMessage = async () => {
   } else {
     receiverId =chatMessages[0].sender;
   }
+  console.log(receiverId);
   try {
     const formData = new FormData();
     formData.append("message", input.value);
@@ -127,7 +128,6 @@ const sendMessage = async () => {
       }
     );
     const data = await response.json();
-    console.log(data);
     document.getElementById("input").value ="";
     await generateChat(receiverId);
   } catch (error) {
