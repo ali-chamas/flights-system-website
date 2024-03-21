@@ -1,8 +1,11 @@
 const rightDiv = document.getElementById("right-div");
+const input = document.getElementById("input");
+const sendButton = document.getElementById("send-btn");
 let messageCardContainer = document.getElementById("message-card-container");
 let userChatContainer = document.getElementById("user-chat-container");
 let adminReplyContainer = document.getElementById("admin-reply-container");
 let messages = [];
+
 
 const getMessages = async () => {
     try {
@@ -15,7 +18,6 @@ const getMessages = async () => {
         alert("Error occured while sending request");
     }
 }
-
 
 
 const generateMessages = () => {
@@ -67,7 +69,7 @@ const generateChat = () => {
         </div>
         <p>${message.sentAt}</p>`
         } else {
-            adminReplyContainer += `<div class="img-chat">
+            adminReplyContainer.innerHTML += `<div class="img-chat">
             <div class="img">
                 <img src="${message.senderImage}" />
             </div>
@@ -87,7 +89,29 @@ const generateChat = () => {
 }
 
 
+const sendMessage = async () => {
+    try {
+        const formData = new FormData();
+        formData.append('message', input.value);
+        formData.append( 'userID', 1);
+        formData.append( 'receiver', 3);
+        const response = await fetch("http://localhost/flights-system-website/server/messages/send-to-user.php", {
+            method: "POST",
+            body: formData
+        });
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+        alert("Error occured while sending request");
+    }
+}
 
+sendButton.addEventListener("click", async () => {
+    await sendMessage();
+    await getMessages();
+    generateChat();
+});
 
 
 
