@@ -88,13 +88,15 @@
     </section>
     <div class="popup bg-secondary" id="add-flight-popup">
         <h2>Add Flight<i class="fa-regular fa-x cancel-button" onclick="removePopup()"></i></h2>
-        <div id="edit-form" class="edit-field flex column center gap">
-            <div class="form-field w-full">
-                <h3>Flight Status:</h3><select id="new-passenger-seat" class="w-full p"> 
-                  <option value="ongoing">Ongoing</option>
-                  <option value="cancelled">Cancelled</option>
-                  <option value="arrived">Arrived</option>
+        <div id="add-form" class="edit-field flex column center gap">
+            <div class="form-field w-full flex column">
+                <h3>AirlineID:</h3><select id="airline"> 
                 </select>
+                <h3>Departure:</h3><input id="departure" type="text" placeholder="" required>
+                <h3>Arrival:</h3><input id="arrival" type="text" placeholder="" required>
+                <h3>DepartureTime:</h3><input id="departure-time" type="text" placeholder="" required>
+                <h3>ArrivalTime:</h3><input id="arrival-time" type="text" placeholder="" required>
+                <h3>Image:</h3><input id="image" type="text" placeholder="" required> 
             </div>
             <button id="btn" type="submit" class="bg-secondary text-white" onclick="modifyStatus()">Confirm</button>
         </div>
