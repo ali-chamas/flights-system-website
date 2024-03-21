@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
     <link rel="stylesheet" href="/client/styles/pages/admin-panel.css" />
     <link rel="stylesheet" href="/client/styles/pages/admin-bookings.css" />
-    <link rel="stylesheet" href="/client/styles/pages/admin-coin-requests.css">
+    <link
+      rel="stylesheet"
+      href="/client/styles/pages/admin-coin-requests.css"
+    />
     <title>FlyMigo</title>
   </head>
   <body>
@@ -72,21 +75,19 @@
       <div class="w-full flex justify-between line">
         <h2>Requests</h2>
       </div>
-<div class="table-container flex center">
-    <table>
-        <thead class="bg-secondary">
+      <div class="table-container flex center">
+        <table>
+          <thead class="bg-secondary">
             <tr>
-                <th class="text-align">UserEmail</th>
-                <th class="text-align">Coins requested</th>
-                <th class="text-align">Action</th>
+              <th class="text-align">UserEmail</th>
+              <th class="text-align">Coins requested</th>
+              <th class="text-align">Action</th>
             </tr>
-                    </thead>
-                <tbody id="tbody">
-            </tbody>
-        <tfoot class="bg-secondary">
-        </tfoot>
-    </table>
-</div>
+          </thead>
+          <tbody id="tbody"></tbody>
+          <tfoot class="bg-secondary"></tfoot>
+        </table>
+      </div>
     </section>
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
@@ -103,6 +104,7 @@
         <a href="#">Donate</a>
       </div>
     </footer>
+    <script src="/client/scripts/common/adminSecurity.js"></script>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
     <script src="/client/scripts/pages/adminCoinRequests.js"></script>

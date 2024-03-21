@@ -205,13 +205,16 @@ const deleteSingleBooking = async (id) => {
 
 const sendRequest = async () => {
   try {
-    const res = await fetch(`${apiURL}/coins/requestCoins.php?userID=2`, {
-      method: "POST",
-      body: JSON.stringify({ amount: amountInput.value }),
-    });
+    const res = await fetch(
+      `${apiURL}/coins/requestCoins.php?userID=${user.id}`,
+      {
+        method: "POST",
+        body: JSON.stringify({ amount: amountInput.value }),
+      }
+    );
     const data = await res.json();
     console.log(data);
-    if (data.status == "success") {
+    if (data.status == "Request submitted successfully") {
       addRequestPopup.classList.add("hidden");
       alert("Request sent");
     }
@@ -224,19 +227,22 @@ const newUser = {
   image: "",
 };
 const changeProfile = async () => {
-  const user = new FormData();
-  user.append("name", newUser.name);
-  user.append("password", newUser.password);
-  user.append("image", newUser.image);
+  const userInfo = new FormData();
+  userInfo.append("name", newUser.name);
+  userInfo.append("password", newUser.password);
+  userInfo.append("image", newUser.image);
   try {
     const res = await fetch(`${apiURL}/users/editUser.php?id=${user.id}`, {
       method: "POST",
-      body: user,
+      body: userInfo,
     });
     const data = await res.json();
+
     await fetchUser();
     generateUserInfo();
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const logout = () => {
