@@ -52,11 +52,13 @@ const generateMessages = () => {
       messagesContainer.innerHTML += ` <div class="flex column gap message-style receiver">
         <b>Admin</b>
         <small>${m.message}</small>
+        <small class="text-gray">${m.sentAt}</small>
       </div>`;
     } else {
       messagesContainer.innerHTML += ` <div class="flex column gap message-style sender">
         <b>${currentUser.name}</b>
         <small>${m.message}</small>
+        <small class="text-gray">${m.sentAt}</small>
       </div>`;
     }
   });
