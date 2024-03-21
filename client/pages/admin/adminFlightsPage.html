@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="/client/styles/common/index.css" />
     <link rel="stylesheet" href="/client/styles/common/colors.css" />
     <link rel="stylesheet" href="/client/styles//common/utilities.css" />
-    <link rel="stylesheet" href="/client/styles/pages/admin-panel.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <link rel="stylesheet" href="/client/styles//pages/admin-flights.css" />
     <title>FlyMigo</title>
   </head>
   <body>
@@ -71,50 +70,35 @@
       </div>
     </header>
 
-    <section class="flex column gap overview-section w-full">
-      <div class="w-full flex justify-between line">
-        <h2>Overview</h2>
+    <section class="flex column gap flights-section w-full">
+      <div class="w-full flex justify-between">
+        <h2>Flights</h2>
+        <div>
+        <button id="btn" class="btn-style text-white special-font shadow bg-secondary" onclick="openPopup()">Add</button>
+        <select id="flights-filter">
+          <option value="all">all</option>
+          <option value="rating">rating</option>
+        </select>
+        </div>
       </div>
-
-        <div class="card-wrapper flex justify-evenly ">
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Total Bookings
-                        </span>
-                        <span class="amount-value" id="total-bookings">
-                            23,756
-                        </span>
-                  </div>
-            </div>
-
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Revenue
-                        </span>
-                        <span class="amount-value" id="revenue">
-                            1000 coin
-                        </span>
-                    </div>
-            </div>
-
-            <div class="income-card bg-primary">
-                    <div class="amount center">
-                        <span class="title">
-                            Number of Users
-                        </span>
-                        <span class="amount-value" id="number-of-users">
-                            8766
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full flex justify-between line statistics">
-              <h2>Statistics</h2>
-            </div>
-            <canvas id="myChart"></canvas>
+      <div
+        class="flex align-center flights-container"
+        id="flights-container"
+      ></div>
     </section>
+    <div class="popup bg-secondary" id="add-flight-popup">
+        <h2>Add Flight<i class="fa-regular fa-x cancel-button" onclick="removePopup()"></i></h2>
+        <div id="edit-form" class="edit-field flex column center gap">
+            <div class="form-field w-full">
+                <h3>Flight Status:</h3><select id="new-passenger-seat" class="w-full p"> 
+                  <option value="ongoing">Ongoing</option>
+                  <option value="cancelled">Cancelled</option>
+                  <option value="arrived">Arrived</option>
+                </select>
+            </div>
+            <button id="btn" type="submit" class="bg-secondary text-white" onclick="modifyStatus()">Confirm</button>
+        </div>
+    </div>
     <footer class="flex w-full align-center justify-evenly bg-primary">
       <div class="flex column">
         <a href="/client/pages/airlines/airlines.html">airlines</a>
@@ -132,7 +116,6 @@
     </footer>
     <script src="/client/scripts/common/apiUrl.js"></script>
     <script src="/client/scripts/common/header.js"></script>
-    <script src="/client/scripts/common/chart.js"></script>
-    <script src="/client/scripts/pages/adminPanel.js"></script>
+    <script src="/client/scripts/pages/adminFlightsPage.js"></script>
   </body>
 </html>

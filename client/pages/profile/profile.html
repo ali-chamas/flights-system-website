@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/client/assets/favicon.ico" />
     <script
       src="https://kit.fontawesome.com/96cf59c222.js"
       crossorigin="anonymous"
@@ -85,7 +85,7 @@
           <input type="text" name="username" id="username-input"/>
         </div>
         <div class="input">
-          <label for="email">Email</label>
+          <label for="email">Password</label>
           <input type="text" name="email" id="email-input"/>
         </div>
         <div class="popup-btns center">
@@ -96,19 +96,9 @@
     </div>
 
     <div class="popup hidden center" id="add-booking-popup">
-      <div class="popup-content">
-        <div class="flex-column-gap">
-          <b>date</b>
-          <small>18/05/2024</small>
-         </div>
-         <div class="flex-column-gap">
-          <b>seats</b>
-          <small>20</small>
-         </div>
-         <div class="flex-column-gap">
-          <b>price</b>
-          <small>500 $</small>
-         </div>
+      <div class="popup-content " >
+        <div class="flex column gap" id="bookings-container"></div>
+        
           <div class="popup-btns center">
           <button class="popup-btn" id="back-btn">Back</button>
           </div>
@@ -131,12 +121,9 @@
 
     <div class="popup hidden center" id="add-reviews-popup">
       <div class="popup-content">
-        <div class="flex-column-gap">
-          <div class="flex-justify-between">
-            <b>username</b>
-            <small><i class="fa-solid fa-star"></i> 4</small>
-          </div>
-          <small>love this</small>
+        <div class="flex column gap reviews-container" id="reviews-container">
+         
+        </div>
           <div class="popup-btns center">
             <button class="popup-btn" id="reviews-back-btn">Back</button>
           </div>
@@ -148,12 +135,12 @@
 
       <div class="coins">
         <p>Coins</p>
-        <p>0</p>
+        <p id="coins-container"></p>
       </div>
       <div class="divs-container">
         <div class="left-div">
-          <div class="image-container">
-            <img src="/client/assets/profile-pic.png" />
+          <div class="image-container" id="user-image">
+            
           </div>
           <div class="account-details-container">
             <h2>Account Details</h2>
@@ -161,12 +148,12 @@
           </div>
           <div class="details-container">
             <div class="username">
-              <p>Username</p>
-              <p>Example</p>
+              <p>Name</p>
+              <small id="user-name" class="text-gray"></small>
             </div>
             <div class="email">
               <p>Email</p>
-              <p>Example@example.com</p>
+              <small class="text-gray" id="user-email"></small>
             </div>
           </div>
         </div>
